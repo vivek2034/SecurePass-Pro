@@ -671,11 +671,14 @@
         (function() {
             'use strict';
             
-            // 🛡️ ANTI-DEBUGGING PROTECTION
-            const antiDebug = {
-                // Detect DevTools opening
+            // 🛡️ SMART PROTECTION SYSTEM (User-Friendly)
+            const smartProtection = {
+                warningCount: 0,
+                maxWarnings: 3,
+                
+                // Gentle DevTools detection
                 detectDevTools() {
-                    const threshold = 160;
+                    const threshold = 200; // More lenient threshold
                     let devtools = {open: false, orientation: null};
                     
                     setInterval(() => {
@@ -683,74 +686,118 @@
                             window.outerWidth - window.innerWidth > threshold) {
                             if (!devtools.open) {
                                 devtools.open = true;
-                                this.triggerProtection('DevTools detected');
+                                this.showWarning('Developer tools detected - Application is protected');
                             }
                         } else {
                             devtools.open = false;
                         }
-                    }, 500);
+                    }, 2000); // Less frequent checking
                 },
                 
-                // Console protection
+                // Gentle console protection
                 protectConsole() {
+                    // Only warn, don't block completely
                     const originalLog = console.log;
-                    const originalError = console.error;
-                    const originalWarn = console.warn;
-                    const originalInfo = console.info;
-                    const originalDebug = console.debug;
-                    
-                    console.log = console.error = console.warn = console.info = console.debug = function() {
-                        return false;
-                    };
-                    
-                    // Detect console usage attempts
-                    Object.defineProperty(console, '_commandLineAPI', {
-                        get: () => {
-                            this.triggerProtection('Console access attempt');
-                            return {};
+                    console.log = function(...args) {
+                        if (args.some(arg => typeof arg === 'string' && arg.includes('SecurePass'))) {
+                            smartProtection.showWarning('Console access monitored for security');
                         }
-                    });
+                        return originalLog.apply(console, args);
+                    };
                 },
                 
-                // Debugger statement protection
+                // Minimal debugger protection
                 antiDebugger() {
+                    // Only check occasionally and be less aggressive
                     setInterval(() => {
                         const start = performance.now();
-                        debugger;
+                        try {
+                            debugger;
+                        } catch(e) {}
                         const end = performance.now();
-                        if (end - start > 100) {
-                            this.triggerProtection('Debugger detected');
+                        if (end - start > 200) { // More lenient timing
+                            this.showWarning('Debugging detected - Please use application normally');
                         }
-                    }, 1000);
+                    }, 5000); // Much less frequent
                 },
                 
-                // Function toString protection
-                protectFunctions() {
-                    const originalToString = Function.prototype.toString;
-                    Function.prototype.toString = function() {
-                        if (this === antiDebug.triggerProtection || 
-                            this === codeObfuscation.obfuscate ||
-                            this.name.includes('protect') ||
-                            this.name.includes('obfuscat')) {
-                            return 'function() { [native code] }';
-                        }
-                        return originalToString.call(this);
-                    };
-                },
-                
-                triggerProtection(reason) {
-                    console.clear();
-                    document.body.innerHTML = `
-                        <div style="position:fixed;top:0;left:0;width:100%;height:100%;background:#000;color:#ff0000;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:24px;z-index:999999;">
-                            <div style="text-align:center;">
-                                <h1>🔒 ACCESS DENIED 🔒</h1>
-                                <p>Unauthorized debugging attempt detected</p>
-                                <p>Reason: ${reason}</p>
-                                <p>This application is protected by enterprise security</p>
+                showWarning(message) {
+                    this.warningCount++;
+                    
+                    if (this.warningCount <= this.maxWarnings) {
+                        const warning = document.createElement('div');
+                        warning.style.cssText = `
+                            position: fixed;
+                            top: 20px;
+                            right: 20px;
+                            background: #f59e0b;
+                            color: white;
+                            padding: 12px 20px;
+                            border-radius: 8px;
+                            font-weight: bold;
+                            z-index: 999999;
+                            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+                            max-width: 300px;
+                            font-size: 14px;
+                        `;
+                        warning.innerHTML = `
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span>⚠️</span>
+                                <div>
+                                    <div style="font-weight: bold;">Security Notice</div>
+                                    <div style="font-size: 12px; margin-top: 4px;">${message}</div>
+                                </div>
                             </div>
+                        `;
+                        
+                        document.body.appendChild(warning);
+                        
+                        setTimeout(() => {
+                            if (warning.parentNode) {
+                                warning.remove();
+                            }
+                        }, 4000);
+                    } else if (this.warningCount > this.maxWarnings) {
+                        // Only after multiple warnings, show stronger message
+                        this.showStrongWarning();
+                    }
+                },
+                
+                showStrongWarning() {
+                    const overlay = document.createElement('div');
+                    overlay.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.9);
+                        color: white;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-family: system-ui, sans-serif;
+                        z-index: 999999;
+                    `;
+                    overlay.innerHTML = `
+                        <div style="text-align: center; max-width: 500px; padding: 40px;">
+                            <h1 style="color: #f59e0b; margin-bottom: 20px;">🔒 Security Protection Active</h1>
+                            <p style="margin-bottom: 20px; line-height: 1.6;">
+                                This application has enterprise-grade security protection. 
+                                Repeated attempts to access developer tools have been detected.
+                            </p>
+                            <p style="margin-bottom: 30px; color: #94a3b8;">
+                                Please use the application normally. If you're a legitimate user, 
+                                simply close developer tools to continue.
+                            </p>
+                            <button onclick="this.parentElement.parentElement.remove(); smartProtection.warningCount = 0;" 
+                                    style="background: #3b82f6; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                                Continue to Application
+                            </button>
                         </div>
                     `;
-                    throw new Error('Security violation detected');
+                    
+                    document.body.appendChild(overlay);
                 }
             };
             
@@ -821,10 +868,13 @@
                             return false;
                         }
                         
-                        // Ctrl+A (Select All) - except in password field
-                        if (e.ctrlKey && e.keyCode === 65 && e.target.id !== 'passwordDisplay') {
-                            e.preventDefault();
-                            return false;
+                        // Ctrl+A (Select All) - allow in most cases
+                        if (e.ctrlKey && e.keyCode === 65) {
+                            // Only prevent if not in input fields
+                            if (!['INPUT', 'TEXTAREA'].includes(e.target.tagName)) {
+                                e.preventDefault();
+                                return false;
+                            }
                         }
                         
                         // Ctrl+P (Print)
@@ -874,65 +924,50 @@
                 }
             };
             
-            // 🔍 TAMPERING DETECTION
-            const tamperProtection = {
-                originalHTML: '',
-                checksumInterval: null,
-                
+            // 🔍 GENTLE MONITORING (Background only)
+            const backgroundMonitoring = {
                 init() {
-                    this.originalHTML = document.documentElement.outerHTML;
-                    this.startMonitoring();
+                    // Just log suspicious activity, don't block
+                    console.log('Security monitoring active');
                 },
                 
-                calculateChecksum(str) {
-                    let hash = 0;
-                    for (let i = 0; i < str.length; i++) {
-                        const char = str.charCodeAt(i);
-                        hash = ((hash << 5) - hash) + char;
-                        hash = hash & hash;
-                    }
-                    return hash;
-                },
-                
-                startMonitoring() {
-                    this.checksumInterval = setInterval(() => {
-                        const currentHTML = document.documentElement.outerHTML;
-                        const originalChecksum = this.calculateChecksum(this.originalHTML);
-                        const currentChecksum = this.calculateChecksum(currentHTML);
-                        
-                        if (Math.abs(originalChecksum - currentChecksum) > 1000) {
-                            this.detectTampering();
+                logActivity(activity) {
+                    // Silent logging for security analysis
+                    if (window.localStorage) {
+                        try {
+                            const logs = JSON.parse(localStorage.getItem('security-logs') || '[]');
+                            logs.push({
+                                activity,
+                                timestamp: new Date().toISOString()
+                            });
+                            // Keep only last 10 logs
+                            if (logs.length > 10) logs.shift();
+                            localStorage.setItem('security-logs', JSON.stringify(logs));
+                        } catch(e) {
+                            // Ignore storage errors
                         }
-                    }, 2000);
-                },
-                
-                detectTampering() {
-                    antiDebug.triggerProtection('Code tampering detected');
+                    }
                 }
             };
             
-            // 🌐 DOMAIN & ENVIRONMENT VALIDATION
+            // 🌐 GENTLE ENVIRONMENT VALIDATION
             const environmentProtection = {
-                allowedDomains: ['localhost', '127.0.0.1', 'securepass.pro'],
-                
                 validateEnvironment() {
+                    // Allow most domains, only block obvious threats
                     const currentDomain = window.location.hostname;
-                    const isValidDomain = this.allowedDomains.some(domain => 
-                        currentDomain.includes(domain)
+                    const suspiciousDomains = ['malware', 'phishing', 'hack'];
+                    
+                    const isSuspicious = suspiciousDomains.some(domain => 
+                        currentDomain.toLowerCase().includes(domain)
                     );
                     
-                    if (!isValidDomain && window.location.protocol !== 'file:') {
-                        antiDebug.triggerProtection('Unauthorized domain detected');
+                    if (isSuspicious) {
+                        smartProtection.showWarning('Suspicious domain detected');
                     }
                     
-                    // Check for common automation tools
-                    if (window.navigator.webdriver || 
-                        window.callPhantom || 
-                        window._phantom ||
-                        window.Buffer ||
-                        window.emit ||
-                        window.spawn) {
-                        antiDebug.triggerProtection('Automation tool detected');
+                    // Only warn about automation tools, don't block
+                    if (window.navigator.webdriver) {
+                        smartProtection.showWarning('Automation detected - Application is monitored');
                     }
                 }
             };
@@ -969,52 +1004,42 @@
                 }
             };
             
-            // 🛡️ IFRAME & EMBEDDING PROTECTION
+            // 🛡️ GENTLE FRAME PROTECTION
             const frameProtection = {
                 init() {
-                    // Prevent iframe embedding
+                    // Only warn about iframe embedding, don't block
                     if (window.top !== window.self) {
-                        antiDebug.triggerProtection('Iframe embedding detected');
+                        smartProtection.showWarning('Application running in iframe - Security monitored');
                     }
                     
-                    // Set frame options
+                    // Set frame options (less restrictive)
                     const meta = document.createElement('meta');
                     meta.httpEquiv = 'X-Frame-Options';
-                    meta.content = 'DENY';
+                    meta.content = 'SAMEORIGIN';
                     document.head.appendChild(meta);
                 }
             };
             
-            // 🔐 INITIALIZATION SEQUENCE
+            // 🔐 SMART INITIALIZATION SEQUENCE
             const initProtection = () => {
                 try {
-                    // Initialize all protection layers
-                    antiDebug.detectDevTools();
-                    antiDebug.protectConsole();
-                    antiDebug.antiDebugger();
-                    antiDebug.protectFunctions();
+                    // Initialize smart protection layers (user-friendly)
+                    smartProtection.detectDevTools();
+                    smartProtection.protectConsole();
+                    smartProtection.antiDebugger();
                     
                     contextProtection.init();
-                    tamperProtection.init();
+                    backgroundMonitoring.init();
                     environmentProtection.validateEnvironment();
                     frameProtection.init();
                     
-                    // Continuous monitoring
+                    // Gentle continuous monitoring
                     setInterval(() => {
-                        environmentProtection.validateEnvironment();
                         memoryProtection.clearMemory();
-                    }, 10000);
-                    
-                    // Hide protection code from inspection
-                    const scripts = document.querySelectorAll('script');
-                    scripts.forEach(script => {
-                        if (script.innerHTML.includes('ENTERPRISE CODE PROTECTION')) {
-                            script.style.display = 'none';
-                        }
-                    });
+                    }, 30000); // Less frequent monitoring
                     
                 } catch (error) {
-                    antiDebug.triggerProtection('Protection system error');
+                    console.warn('Protection system initialized with warnings');
                 }
             };
             
@@ -1840,5 +1865,5 @@
         </div>
     </noscript>
     
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9652d5d0b704409f',t:'MTc1MzUyMTc3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9652e2f4c79e5e9f',t:'MTc1MzUyMjMxMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
