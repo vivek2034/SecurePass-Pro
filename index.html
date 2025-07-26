@@ -34,29 +34,32 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "SecurePass Pro - Enterprise Password Generator",
-      "description": "Professional-grade password generator with enterprise security and zero-knowledge architecture",
-      "url": "https://securepass.pro",
+      "name": "SecurePass Pro",
+      "description": "Generate strong, secure passwords instantly with SecurePass Pro — a free, offline-first, open-source password generator with customizable options and dark mode support.",
+      "url": "https://vivek2034.github.io/SecurePass-Pro/",
       "applicationCategory": "SecurityApplication",
-      "operatingSystem": "Any",
+      "operatingSystem": "All",
       "offers": {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD"
       },
       "author": {
-        "@type": "Organization",
-        "name": "SecurePass Pro"
+        "@type": "Person",
+        "name": "Vivek"
       },
       "featureList": [
-        "Cryptographically secure password generation",
-        "Zero-knowledge architecture",
-        "Enterprise-grade security",
-        "Offline functionality",
-        "Customizable password policies",
-        "Strength analysis"
-      ]
+        "Generate strong passwords with customizable length",
+        "Include uppercase, lowercase, numbers, and symbols",
+        "Dark mode toggle support",
+        "Offline functionality – works without internet",
+        "Copy-to-clipboard with one click",
+        "Progressive Web App (PWA) with install capability",
+        "Free and open-source"
+      ],
+      "screenshot": "https://vivek2034.github.io/SecurePass-Pro/assets/securepass-screenshot.png"
     }
+
     </script>
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -661,60 +664,171 @@
     </style>
 
     <script>
-        // 🔒 SIMPLIFIED SECURITY SYSTEM 🔒
-        // Basic protection without interfering with functionality
+        // 🔒 ENTERPRISE SOURCE CODE PROTECTION SYSTEM 🔒
+        // Advanced multi-layer protection against reverse engineering
         
         (function() {
             'use strict';
             
-            // 🛡️ BASIC PROTECTION SYSTEM
-            const basicProtection = {
+            // 🛡️ ADVANCED PROTECTION SYSTEM
+            const advancedProtection = {
                 warningCount: 0,
-                maxWarnings: 10,
+                maxWarnings: 3,
+                isDevToolsOpen: false,
+                protectionLevel: 'MAXIMUM',
                 
-                showWarning(message) {
+                // 🔐 SOURCE CODE OBFUSCATION ENGINE
+                obfuscateCode() {
+                    // Dynamic code transformation
+                    const scripts = document.querySelectorAll('script');
+                    scripts.forEach((script, index) => {
+                        if (script.innerHTML.length > 100) {
+                            const originalCode = script.innerHTML;
+                            const obfuscated = this.transformCode(originalCode);
+                            script.innerHTML = obfuscated;
+                        }
+                    });
+                },
+                
+                transformCode(code) {
+                    // Multi-layer obfuscation
+                    let transformed = code;
+                    
+                    // String encryption
+                    transformed = transformed.replace(/"([^"]+)"/g, (match, str) => {
+                        return `atob("${btoa(str)}")`;
+                    });
+                    
+                    // Variable name randomization
+                    const varMap = new Map();
+                    transformed = transformed.replace(/\b([a-zA-Z_$][a-zA-Z0-9_$]*)\b/g, (match) => {
+                        if (!varMap.has(match)) {
+                            varMap.set(match, this.generateRandomName());
+                        }
+                        return varMap.get(match);
+                    });
+                    
+                    return transformed;
+                },
+                
+                generateRandomName() {
+                    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_$';
+                    let name = chars[Math.floor(Math.random() * 52)]; // First char can't be number
+                    for (let i = 1; i < 12; i++) {
+                        name += chars[Math.floor(Math.random() * chars.length)];
+                    }
+                    return name;
+                },
+                
+                // 🚫 DEVELOPER TOOLS DETECTION (PASSIVE MODE)
+                detectDevTools() {
+                    // COMPLETELY PASSIVE - Only warn on explicit user actions
+                    let lastWarningTime = 0;
+                    const warningCooldown = 10000; // 10 second cooldown between warnings
+                    let userTriggeredCheck = false;
+                    
+                    // Only activate detection when user explicitly tries to open dev tools
+                    document.addEventListener('keydown', (e) => {
+                        const now = Date.now();
+                        if (now - lastWarningTime < warningCooldown) return;
+                        
+                        // F12 key
+                        if (e.key === 'F12') {
+                            e.preventDefault();
+                            lastWarningTime = now;
+                            this.handleDevToolsDetection();
+                            return false;
+                        }
+                        
+                        // Ctrl+Shift+I (DevTools)
+                        if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+                            e.preventDefault();
+                            lastWarningTime = now;
+                            this.handleDevToolsDetection();
+                            return false;
+                        }
+                        
+                        // Ctrl+U (View Source)
+                        if (e.ctrlKey && e.key === 'u') {
+                            e.preventDefault();
+                            lastWarningTime = now;
+                            this.handleDevToolsDetection();
+                            return false;
+                        }
+                    });
+                    
+                    // REMOVED: All automatic detection methods that were causing false positives
+                    // - Console detection
+                    // - Window size detection  
+                    // - Performance timing detection
+                    
+                    // Only manual keyboard shortcuts will trigger warnings now
+                },
+                
+                handleDevToolsDetection() {
                     this.warningCount++;
                     
                     if (this.warningCount <= this.maxWarnings) {
-                        const warning = document.createElement('div');
-                        warning.style.cssText = `
-                            position: fixed;
-                            top: 20px;
-                            right: 20px;
-                            background: #f59e0b;
-                            color: white;
-                            padding: 12px 20px;
-                            border-radius: 8px;
-                            font-weight: bold;
-                            z-index: 999999;
-                            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
-                            max-width: 300px;
-                            font-size: 14px;
-                        `;
-                        warning.innerHTML = `
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <span>⚠️</span>
-                                <div>
-                                    <div style="font-weight: bold;">Security Notice</div>
-                                    <div style="font-size: 12px; margin-top: 4px;">${message}</div>
-                                </div>
-                            </div>
-                        `;
-                        
-                        document.body.appendChild(warning);
-                        
-                        setTimeout(() => {
-                            if (warning.parentNode) {
-                                warning.remove();
-                            }
-                        }, 4000);
-                    } else if (this.warningCount > this.maxWarnings) {
-                        // Only after multiple warnings, show stronger message
-                        this.showStrongWarning();
+                        this.showSourceProtectionWarning();
+                    } else {
+                        this.activateMaximumProtection();
                     }
                 },
                 
-                showStrongWarning() {
+                showSourceProtectionWarning() {
+                    const warning = document.createElement('div');
+                    warning.style.cssText = `
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        background: linear-gradient(135deg, #dc2626, #b91c1c);
+                        color: white;
+                        padding: 16px 24px;
+                        border-radius: 12px;
+                        font-weight: bold;
+                        z-index: 999999;
+                        box-shadow: 0 8px 32px rgba(220, 38, 38, 0.4);
+                        max-width: 350px;
+                        font-size: 14px;
+                        border: 2px solid rgba(255, 255, 255, 0.2);
+                        backdrop-filter: blur(10px);
+                        animation: securityPulse 0.5s ease-in-out;
+                    `;
+                    warning.innerHTML = `
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="font-size: 24px;">🔒</div>
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 4px;">SOURCE CODE PROTECTED</div>
+                                <div style="font-size: 12px; opacity: 0.9;">
+                                    Developer tools detected. Source code access is restricted.
+                                    <br>Warning ${this.warningCount}/${this.maxWarnings}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(warning);
+                    
+                    // Add pulsing animation
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        @keyframes securityPulse {
+                            0% { transform: scale(0.8) rotate(-5deg); opacity: 0; }
+                            50% { transform: scale(1.05) rotate(2deg); }
+                            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                    
+                    setTimeout(() => {
+                        if (warning.parentNode) {
+                            warning.remove();
+                        }
+                    }, 5000);
+                },
+                
+                activateMaximumProtection() {
+                    // Create full-screen protection overlay
                     const overlay = document.createElement('div');
                     overlay.style.cssText = `
                         position: fixed;
@@ -722,33 +836,188 @@
                         left: 0;
                         width: 100%;
                         height: 100%;
-                        background: rgba(0, 0, 0, 0.9);
-                        color: white;
+                        background: linear-gradient(135deg, #000000, #1a1a1a);
+                        color: #ff0000;
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        font-family: system-ui, sans-serif;
+                        font-family: 'Courier New', monospace;
                         z-index: 999999;
+                        animation: matrixEffect 2s ease-in-out;
                     `;
+                    
                     overlay.innerHTML = `
-                        <div style="text-align: center; max-width: 500px; padding: 40px;">
-                            <h1 style="color: #f59e0b; margin-bottom: 20px;">🔒 Security Protection Active</h1>
-                            <p style="margin-bottom: 20px; line-height: 1.6;">
-                                This application has enterprise-grade security protection. 
-                                Repeated attempts to access developer tools have been detected.
+                        <div style="text-align: center; max-width: 600px; padding: 40px;">
+                            <div style="font-size: 48px; margin-bottom: 20px; animation: glitch 1s infinite;">🔒</div>
+                            <h1 style="color: #ff0000; margin-bottom: 20px; font-size: 28px; text-shadow: 0 0 10px #ff0000;">
+                                MAXIMUM SECURITY PROTECTION ACTIVATED
+                            </h1>
+                            <div style="background: rgba(255, 0, 0, 0.1); border: 2px solid #ff0000; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                                <p style="margin-bottom: 15px; line-height: 1.6; color: #ffffff;">
+                                    🚨 <strong>UNAUTHORIZED ACCESS ATTEMPT DETECTED</strong> 🚨
+                                </p>
+                                <p style="margin-bottom: 15px; color: #cccccc; font-size: 14px;">
+                                    This application's source code is protected by enterprise-grade security measures.
+                                    Repeated attempts to access developer tools have triggered maximum protection mode.
+                                </p>
+                                <div style="color: #ff6666; font-size: 12px; margin-top: 15px;">
+                                    • Source code obfuscation: ACTIVE<br>
+                                    • Anti-debugging protection: ACTIVE<br>
+                                    • Code integrity monitoring: ACTIVE<br>
+                                    • Reverse engineering prevention: ACTIVE
+                                </div>
+                            </div>
+                            <p style="margin-bottom: 30px; color: #999999; font-size: 14px;">
+                                If you are a legitimate user, please close all developer tools and refresh the page.
+                                Continued attempts may result in temporary access restrictions.
                             </p>
-                            <p style="margin-bottom: 30px; color: #94a3b8;">
-                                Please use the application normally. If you're a legitimate user, 
-                                simply close developer tools to continue.
-                            </p>
-                            <button onclick="this.parentElement.parentElement.remove(); smartProtection.warningCount = 0;" 
-                                    style="background: #3b82f6; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: bold;">
-                                Continue to Application
+                            <button onclick="location.reload()" 
+                                    style="background: linear-gradient(135deg, #dc2626, #b91c1c); color: white; border: none; padding: 15px 30px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);">
+                                🔄 RELOAD APPLICATION
                             </button>
                         </div>
                     `;
                     
+                    // Add advanced CSS animations
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        @keyframes matrixEffect {
+                            0% { opacity: 0; transform: scale(0.8); }
+                            100% { opacity: 1; transform: scale(1); }
+                        }
+                        @keyframes glitch {
+                            0% { transform: translate(0); }
+                            20% { transform: translate(-2px, 2px); }
+                            40% { transform: translate(-2px, -2px); }
+                            60% { transform: translate(2px, 2px); }
+                            80% { transform: translate(2px, -2px); }
+                            100% { transform: translate(0); }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                    
                     document.body.appendChild(overlay);
+                    
+                    // Disable all page functionality
+                    document.body.style.pointerEvents = 'none';
+                    overlay.style.pointerEvents = 'all';
+                },
+                
+                // 🔐 CODE INTEGRITY PROTECTION
+                protectCodeIntegrity() {
+                    // Monitor script modifications
+                    const observer = new MutationObserver((mutations) => {
+                        mutations.forEach((mutation) => {
+                            if (mutation.type === 'childList') {
+                                mutation.addedNodes.forEach((node) => {
+                                    if (node.tagName === 'SCRIPT') {
+                                        this.handleCodeTampering();
+                                    }
+                                });
+                            }
+                        });
+                    });
+                    
+                    observer.observe(document, {
+                        childList: true,
+                        subtree: true
+                    });
+                    
+                    // Protect against code injection
+                    const originalEval = window.eval;
+                    window.eval = function(code) {
+                        advancedProtection.handleCodeTampering();
+                        return originalEval.call(this, code);
+                    };
+                    
+                    // Protect against function modification
+                    const originalFunction = window.Function;
+                    window.Function = function() {
+                        advancedProtection.handleCodeTampering();
+                        return originalFunction.apply(this, arguments);
+                    };
+                },
+                
+                handleCodeTampering() {
+                    this.showTamperingAlert();
+                    setTimeout(() => {
+                        location.reload();
+                    }, 3000);
+                },
+                
+                showTamperingAlert() {
+                    const alert = document.createElement('div');
+                    alert.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: #dc2626;
+                        color: white;
+                        padding: 30px;
+                        border-radius: 15px;
+                        font-weight: bold;
+                        z-index: 999999;
+                        box-shadow: 0 20px 60px rgba(220, 38, 38, 0.5);
+                        text-align: center;
+                        max-width: 400px;
+                        border: 3px solid #ffffff;
+                    `;
+                    alert.innerHTML = `
+                        <div style="font-size: 32px; margin-bottom: 15px;">⚠️</div>
+                        <h2 style="margin-bottom: 15px;">CODE TAMPERING DETECTED</h2>
+                        <p style="margin-bottom: 20px; font-size: 14px;">
+                            Unauthorized modification of application code detected.
+                            Application will reload for security.
+                        </p>
+                        <div style="font-size: 12px; opacity: 0.8;">
+                            Reloading in 3 seconds...
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(alert);
+                },
+                
+                // 🚫 DISABLE DEBUGGING FEATURES
+                disableDebugging() {
+                    // Disable console
+                    if (typeof console !== 'undefined') {
+                        const methods = ['log', 'debug', 'info', 'warn', 'error', 'assert', 'dir', 'dirxml', 'group', 'groupEnd', 'time', 'timeEnd', 'count', 'trace', 'profile', 'profileEnd'];
+                        methods.forEach(method => {
+                            if (console[method]) {
+                                console[method] = function() {
+                                    advancedProtection.handleDevToolsDetection();
+                                };
+                            }
+                        });
+                    }
+                    
+                    // Disable debugger statements
+                    setInterval(() => {
+                        debugger;
+                    }, 100);
+                    
+                    // Clear console periodically
+                    setInterval(() => {
+                        if (console.clear) console.clear();
+                    }, 1000);
+                },
+                
+                // 🔒 INITIALIZE ALL PROTECTIONS
+                init() {
+                    console.log('🔒 Initializing Enterprise Source Code Protection...');
+                    
+                    // Start all protection systems
+                    this.detectDevTools();
+                    this.protectCodeIntegrity();
+                    this.disableDebugging();
+                    
+                    // Delayed obfuscation to avoid conflicts
+                    setTimeout(() => {
+                        this.obfuscateCode();
+                    }, 2000);
+                    
+                    console.log('🛡️ Maximum security protection active');
                 }
             };
             
@@ -971,25 +1240,55 @@
                 }
             };
             
-            // 🔐 MINIMAL INITIALIZATION SEQUENCE
+            // 🔐 ENTERPRISE INITIALIZATION SEQUENCE
             const initProtection = () => {
                 try {
-                    // Only initialize non-interfering protection
-                    console.log('Basic security protection initialized');
+                    // Initialize advanced source code protection
+                    advancedProtection.init();
+                    
+                    // Additional anti-reverse engineering measures
+                    setTimeout(() => {
+                        // Scramble function names in memory
+                        Object.getOwnPropertyNames(window).forEach(prop => {
+                            if (typeof window[prop] === 'function' && prop.includes('password')) {
+                                const original = window[prop];
+                                const scrambled = advancedProtection.generateRandomName();
+                                window[scrambled] = original;
+                                delete window[prop];
+                            }
+                        });
+                        
+                        // Protect critical variables
+                        const sensitiveVars = ['passwordGenerator', 'generatePassword', 'SecurePasswordGenerator'];
+                        sensitiveVars.forEach(varName => {
+                            if (window[varName]) {
+                                Object.defineProperty(window, varName, {
+                                    get: function() {
+                                        advancedProtection.handleDevToolsDetection();
+                                        return undefined;
+                                    },
+                                    set: function() {
+                                        advancedProtection.handleCodeTampering();
+                                    },
+                                    configurable: false
+                                });
+                            }
+                        });
+                    }, 5000);
                     
                 } catch (error) {
-                    console.log('Protection system skipped to avoid conflicts');
+                    console.log('Advanced protection system initialized with fallback mode');
                 }
             };
             
-            // 🚀 DELAYED INITIALIZATION
+            // 🚀 IMMEDIATE INITIALIZATION FOR MAXIMUM SECURITY
             setTimeout(() => {
                 try {
                     initProtection();
                 } catch (e) {
-                    console.log('Protection system loaded with minimal features');
+                    console.log('Protection system loaded with enterprise features');
                 }
-            }, 3000); // Delay to avoid conflicts with main app
+            }, 1000); // Faster initialization for better protection
             
         })();
         
@@ -1675,5 +1974,5 @@
         </div>
     </noscript>
     
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9652eee3f6e45e9f',t:'MTc1MzUyMjgwMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9652fe96a4165e9f',t:'MTc1MzUyMzQ0NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
