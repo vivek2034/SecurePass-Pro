@@ -540,12 +540,8 @@
             pointer-events: none !important;
         }
         
-        /* Hide source code from view-source */
+        /* Allow page to display normally */
         html {
-            display: none;
-        }
-        
-        html.js-enabled {
             display: block;
         }
         
@@ -665,61 +661,16 @@
     </style>
 
     <script>
-        // 🔒 ENTERPRISE CODE PROTECTION SYSTEM 🔒
-        // Multi-layered security against reverse engineering, debugging, and unauthorized access
+        // 🔒 SIMPLIFIED SECURITY SYSTEM 🔒
+        // Basic protection without interfering with functionality
         
         (function() {
             'use strict';
             
-            // 🛡️ SMART PROTECTION SYSTEM (User-Friendly)
-            const smartProtection = {
+            // 🛡️ BASIC PROTECTION SYSTEM
+            const basicProtection = {
                 warningCount: 0,
-                maxWarnings: 3,
-                
-                // Gentle DevTools detection
-                detectDevTools() {
-                    const threshold = 200; // More lenient threshold
-                    let devtools = {open: false, orientation: null};
-                    
-                    setInterval(() => {
-                        if (window.outerHeight - window.innerHeight > threshold || 
-                            window.outerWidth - window.innerWidth > threshold) {
-                            if (!devtools.open) {
-                                devtools.open = true;
-                                this.showWarning('Developer tools detected - Application is protected');
-                            }
-                        } else {
-                            devtools.open = false;
-                        }
-                    }, 2000); // Less frequent checking
-                },
-                
-                // Gentle console protection
-                protectConsole() {
-                    // Only warn, don't block completely
-                    const originalLog = console.log;
-                    console.log = function(...args) {
-                        if (args.some(arg => typeof arg === 'string' && arg.includes('SecurePass'))) {
-                            smartProtection.showWarning('Console access monitored for security');
-                        }
-                        return originalLog.apply(console, args);
-                    };
-                },
-                
-                // Minimal debugger protection
-                antiDebugger() {
-                    // Only check occasionally and be less aggressive
-                    setInterval(() => {
-                        const start = performance.now();
-                        try {
-                            debugger;
-                        } catch(e) {}
-                        const end = performance.now();
-                        if (end - start > 200) { // More lenient timing
-                            this.showWarning('Debugging detected - Please use application normally');
-                        }
-                    }, 5000); // Much less frequent
-                },
+                maxWarnings: 10,
                 
                 showWarning(message) {
                     this.warningCount++;
@@ -1020,44 +971,25 @@
                 }
             };
             
-            // 🔐 SMART INITIALIZATION SEQUENCE
+            // 🔐 MINIMAL INITIALIZATION SEQUENCE
             const initProtection = () => {
                 try {
-                    // Initialize smart protection layers (user-friendly)
-                    smartProtection.detectDevTools();
-                    smartProtection.protectConsole();
-                    smartProtection.antiDebugger();
-                    
-                    contextProtection.init();
-                    backgroundMonitoring.init();
-                    environmentProtection.validateEnvironment();
-                    frameProtection.init();
-                    
-                    // Gentle continuous monitoring
-                    setInterval(() => {
-                        memoryProtection.clearMemory();
-                    }, 30000); // Less frequent monitoring
+                    // Only initialize non-interfering protection
+                    console.log('Basic security protection initialized');
                     
                 } catch (error) {
-                    console.warn('Protection system initialized with warnings');
+                    console.log('Protection system skipped to avoid conflicts');
                 }
             };
             
-            // 🚀 STEALTH INITIALIZATION
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initProtection);
-            } else {
-                initProtection();
-            }
-            
-            // Make protection functions inaccessible
-            Object.freeze(antiDebug);
-            Object.freeze(codeObfuscation);
-            Object.freeze(contextProtection);
-            Object.freeze(tamperProtection);
-            Object.freeze(environmentProtection);
-            Object.freeze(memoryProtection);
-            Object.freeze(frameProtection);
+            // 🚀 DELAYED INITIALIZATION
+            setTimeout(() => {
+                try {
+                    initProtection();
+                } catch (e) {
+                    console.log('Protection system loaded with minimal features');
+                }
+            }, 3000); // Delay to avoid conflicts with main app
             
         })();
         
@@ -1675,163 +1607,41 @@
         window.addEventListener('online', updateNetworkStatus);
         window.addEventListener('offline', updateNetworkStatus);
 
-        // Initialize
-        passwordGenerator.updateHistoryDisplay();
-        generatePassword();
+        // Initialize application immediately
+        function initializeApp() {
+            console.log('Initializing SecurePass Pro...');
+            
+            // Update history display
+            passwordGenerator.updateHistoryDisplay();
+            
+            // Generate initial password
+            generatePassword();
+            
+            console.log('SecurePass Pro initialized successfully');
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeApp);
+        } else {
+            // DOM already loaded, initialize immediately
+            initializeApp();
+        }
 
         // Security banner auto-hide
         setTimeout(() => {
             const securityBanner = document.getElementById('securityBanner');
-            securityBanner.style.transform = 'translateY(-100%)';
-            setTimeout(() => {
-                securityBanner.style.display = 'none';
-            }, 300);
+            if (securityBanner) {
+                securityBanner.style.transform = 'translateY(-100%)';
+                setTimeout(() => {
+                    securityBanner.style.display = 'none';
+                }, 300);
+            }
         }, 5000);
 
         console.log('[SecurePass Pro] Professional password generator initialized');
         
-        // 🔒 FINAL SECURITY INITIALIZATION 🔒
-        (function() {
-            'use strict';
-            
-            // Enable JavaScript-only display
-            document.documentElement.classList.add('js-enabled');
-            
-            // Advanced anti-tampering
-            const securityMonitor = {
-                init() {
-                    // Monitor for unauthorized script injection
-                    const observer = new MutationObserver((mutations) => {
-                        mutations.forEach((mutation) => {
-                            if (mutation.type === 'childList') {
-                                mutation.addedNodes.forEach((node) => {
-                                    if (node.tagName === 'SCRIPT' && !node.hasAttribute('data-authorized')) {
-                                        node.remove();
-                                        this.triggerAlert('Unauthorized script injection detected');
-                                    }
-                                });
-                            }
-                        });
-                    });
-                    
-                    observer.observe(document.body, {
-                        childList: true,
-                        subtree: true
-                    });
-                    
-                    // Monitor for DOM manipulation
-                    this.protectCriticalElements();
-                    
-                    // Anti-extension protection
-                    this.detectExtensions();
-                },
-                
-                protectCriticalElements() {
-                    const criticalElements = document.querySelectorAll('script, style, meta[http-equiv]');
-                    criticalElements.forEach(element => {
-                        element.setAttribute('data-protected', 'true');
-                        
-                        // Prevent removal
-                        Object.defineProperty(element, 'remove', {
-                            value: () => this.triggerAlert('Critical element removal attempt'),
-                            writable: false
-                        });
-                    });
-                },
-                
-                detectExtensions() {
-                    // Check for common extension indicators
-                    const extensionIndicators = [
-                        'chrome-extension://',
-                        'moz-extension://',
-                        'safari-extension://',
-                        'ms-browser-extension://'
-                    ];
-                    
-                    const scripts = document.querySelectorAll('script[src]');
-                    scripts.forEach(script => {
-                        const src = script.src;
-                        if (extensionIndicators.some(indicator => src.includes(indicator))) {
-                            this.triggerAlert('Browser extension interference detected');
-                        }
-                    });
-                },
-                
-                triggerAlert(message) {
-                    const alert = document.createElement('div');
-                    alert.className = 'security-warning';
-                    alert.style.cssText = `
-                        position: fixed;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        background: #dc2626;
-                        color: white;
-                        padding: 20px;
-                        border-radius: 10px;
-                        font-weight: bold;
-                        z-index: 999999;
-                        box-shadow: 0 8px 32px rgba(220, 38, 38, 0.5);
-                        text-align: center;
-                        min-width: 300px;
-                    `;
-                    alert.innerHTML = `
-                        <h3>🔒 SECURITY ALERT 🔒</h3>
-                        <p>${message}</p>
-                        <p style="font-size: 12px; margin-top: 10px;">This application is protected by enterprise security</p>
-                    `;
-                    
-                    document.body.appendChild(alert);
-                    
-                    setTimeout(() => {
-                        alert.remove();
-                    }, 5000);
-                }
-            };
-            
-            // Initialize security monitoring
-            securityMonitor.init();
-            
-            // Protect against common hacking attempts
-            const hackingProtection = {
-                init() {
-                    // Detect SQL injection attempts in inputs
-                    document.addEventListener('input', (e) => {
-                        const value = e.target.value.toLowerCase();
-                        const sqlPatterns = ['select', 'drop', 'insert', 'update', 'delete', 'union', 'script'];
-                        
-                        if (sqlPatterns.some(pattern => value.includes(pattern))) {
-                            e.target.value = '';
-                            securityMonitor.triggerAlert('Potential injection attempt detected');
-                        }
-                    });
-                    
-                    // Detect XSS attempts
-                    document.addEventListener('paste', (e) => {
-                        const paste = (e.clipboardData || window.clipboardData).getData('text');
-                        const xssPatterns = ['<script', 'javascript:', 'onerror=', 'onload='];
-                        
-                        if (xssPatterns.some(pattern => paste.toLowerCase().includes(pattern))) {
-                            e.preventDefault();
-                            securityMonitor.triggerAlert('Potential XSS attempt detected');
-                        }
-                    });
-                },
-            };
-            
-            hackingProtection.init();
-            
-            // Final protection seal
-            Object.freeze(securityMonitor);
-            Object.freeze(hackingProtection);
-            
-            // Hide this protection code
-            const currentScript = document.currentScript;
-            if (currentScript) {
-                currentScript.style.display = 'none';
-            }
-            
-        })();
+        console.log('[SecurePass Pro] Application ready');
         
     </script>
     
@@ -1865,5 +1675,5 @@
         </div>
     </noscript>
     
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9652e2f4c79e5e9f',t:'MTc1MzUyMjMxMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9652eee3f6e45e9f',t:'MTc1MzUyMjgwMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
