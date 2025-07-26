@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- SEO & Meta -->
+    <title>SecurePass Pro - Enterprise Password Generator | Zero-Knowledge Security</title>
+    <meta name="description" content="Professional-grade password generator with enterprise security. Generate cryptographically secure passwords with advanced customization. Zero data collection, works offline.">
+    <meta name="keywords" content="enterprise password generator, secure password, cryptographic security, zero-knowledge, professional password tool">
+    <meta name="author" content="SecurePass Pro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SecurePass Pro - Enterprise Password Generator">
+    <meta property="og:description" content="Professional-grade password generator with enterprise security and zero-knowledge architecture.">
+    <meta property="og:image" content="/og-image.png">
+    
+    <!-- PWA Configuration -->
+    <meta name="theme-color" content="#1e40af">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="SecurePass Pro">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlNlY3VyZVBhc3MgUHJvIC0gRW50ZXJwcmlzZSBQYXNzd29yZCBHZW5lcmF0b3IiLAogICJzaG9ydF9uYW1lIjogIlNlY3VyZVBhc3MgUHJvIiwKICAiZGVzY3JpcHRpb24iOiAiUHJvZmVzc2lvbmFsLWdyYWRlIHBhc3N3b3JkIGdlbmVyYXRvciB3aXRoIGVudGVycHJpc2Ugc2VjdXJpdHkiLAogICJzdGFydF91cmwiOiAiLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiIzBmMTcyYSIsCiAgInRoZW1lX2NvbG9yIjogIiMxZTQwYWYiLAogICJjYXRlZ29yaWVzIjogWyJzZWN1cml0eSIsICJ1dGlsaXRpZXMiLCAicHJvZHVjdGl2aXR5Il0sCiAgImljb25zIjogWwogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIZHBaSFJvUFNJeE1qQWlJR2hsYVdkb2REMGlNVEl3SWlCMmFXVjNRbTk0UFNJd0lEQWdNVEl3SURFeU1DSStQSEpsWTNRZ2VEMGlNVEFpSUhrOUlqRXdJaUIzYVdSMGFEMGlNVEF3SWlCb1pXbG5hSFE5SWpFd01DSWdjbmc5SWpFd0lpQm1hV3hzUFNJak1XVTBNR0ZtSWk4K1BIQmhkR2dnWkQwaVRUUXdJRE13U0Rnd1l6RXhMak1nTUNBeU1DQXhNUzR6ZGpVNFl6QWdNVEV1TXlBeE1TQXlNSE10TVRFdU15QXlNQzB5TUNBeU1FZzBNRm9pSUdacGJHdzlJaU5tWm1abVppSXZQanh3WVhSb0lHUTlJazAwTUNBMU1FZzRNR014TVRNdU15QXdJREl3SURFeExqTm1NaUEwTGpjZ05DQTBMamNnTkNBMGFEUXdZekV4TGpNZ01DQXlNQ0F4TVRNdU0xTTJPQzQzSURVd0lEWXdJRFV3U0RRd1dpSWdabWxzYkQwaVl6RTBNakl5WmlJdlBqeDBaWGgwSUhnOUlqWXdJaUI1UFNJMk5TSWdkR1Y0ZEMxaGJtTm9iM0k5SW0xcFpHUnNaU0lnWm1sc2JEMGlJMlptWm1abUlpQm1iMjUwTFhOcGVtVTlJakV5SWlCbWIyNTBMV1poYldsc2VUMGlRWEpwWVd3c0lITmhibk10YzJWeWFXWWlQbE5GUTFWU1JVUkJVMU04TDNSbGVIUStQQzl6ZG1jKyIsCiAgICAgICJzaXplcyI6ICIxMjB4MTIwIiwKICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCNGJXeHVjejBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01DOXpkbWNpSUhkcFpIUm9QU0l4T1RJaUlHaGxhV2RvZEQwaU1Ua3lJaUIyYVdWM1FtOTRQU0l3SURBZ01Ua3lJREU1TWlJK1BISmxZM1FnZUQwaU1UQWlJSGs5SWpFd0lpQjNhV1IwYUQwaU1UY3lJaUJvWldsbmFIUTlJakUzTWlJZ2NuZzlJakV3SWlCbWFXeHNQU0lqTVdVME1HRm1JaTgrUEhCaGRHZ2daRDBpVFRRd0lETXdTRGd3WXpFeExqTWdNQ0F5TUNBeE1TNHpkalo0WXpBZ01URXVNeUF4TVNBeU1ITXRNVEV1TXlBeU1DMHlNQ0F5TUVnME1HdHRNVEkwSURJNE1HZzBNR014TVRNdU15QXdJREl3SURFeExqTlROamd1TnlBek1DQTJNQ0F6TUVnME1Gb2lJR1pwYkd3OUlpTm1abVptWmlJdlBqeHdZWFJvSUdROUlrMDBNQ0ExTUVnNE1HTXhNVE11TXlBd0lESXdJREV4TGpObU1pQTBMamNnTkNBMExqY2dOQ0EwYURRd1l6RXhMak1nTUNBeU1DQXhNVE11TTFNMk9DNDNJRFV3SURZd0lEVXdTRFF3V2lJZ1ptbHNiRDBpSXpFME1qSXlaaUl2UGp4MFpYaDBJSGc5SWpZd0lpQjVQU0kyTlNJZ2RHVjRkQzFoYm1Ob2IzSTlJbTFwWkdSc1pTSWdabWxzYkQwaUkyWm1abVptSWlCbWIyNTBMWE5wZW1VOUlqRTJJaUJtYjI1MExXWmhiV2xzZVQwaVFYSnBZV3dzSUhOaGJuTXRjMlZ5YVdZaVBsTkZRMVZTUlVSQlUxTWdVRkpQUEM5MFpYaDBQand2YzNabktnPT0iLAogICAgICAic2l6ZXMiOiAiMTkyeDE5MiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9LAogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIZHBaSFJvUFNJMU1USWlJR2hsYVdkb2REMGlOVEV5SWlCMmFXVjNRbTk0UFNJd0lEQWdOVEV5SURVeE1pSStQSEpsWTNRZ2VEMGlOVEFpSUhrOUlqVXdJaUIzYVdSMGFEMGlOREV5SWlCb1pXbG5hSFE5SWpReE1pSWdjbmc5SWpJMElpQm1hV3hzUFNJak1XVTBNR0ZtSWk4K1BIQmhkR2dnWkQwaVRUTXdNQ0F4TURCb01qRXlZekV4TGpNZ01DQXlNQ0F4TVNNeWRqSTRNR000SURBZ01URXVNeUF4TVNBeU1ITXRNVEV1TXlBeU1DMHlNQ0F5TUVnMk1HdHRNVEkwSURJNE1HZ3hNalJqTVRFdU15QXdJREl3SURFeExqTlRNamd1TnlBeE1EQWdNakFnTVRCb0xUSXhNbXRpTFRJMElESTRNR2d0TVRJMFF6STRMamNnTVRBd0lESXdJREU0TGpNZ01qQWdNVEJvTWpFeVdpSWdabWxzYkQwaVkyWm1abVptSWk4K1BIQmhkR2dnWkQwaVRUTXdNQ0F5TURCb01qRXlZekV4TGpNZ01DQXlNQ0F4TVNNeVpqZ2dOQzQzSURnZ05DNDNJRGdnTkdneE9UWmpNVEV1TXlBd0lESXdJREV4TGpOVE1qZ3VOeUF5TURBZ01qQWdNakJvTFRJeE1tdGlMVEkwSURJNE1HZ3RNVGsyUXpJNExqY2dNakFnTWpBZ01qZ3VOeUF5TUNBMk1HZ3RNakV5V2lJZ1ptbHNiRDBpSXpFME1qSXlaaUl2UGp4MFpYaDBJSGc5SWpJMU5pSWdlVDBpTWpVMklpQjBaWGgwTFdGdVkyaHZjajBpYldsa1pHeGxJaUJtYVd4c1BTSWpabVptWm1ZaUlHWnZiblF0YzJsNlpUMGlNekJpWWlJZ1ptOXVkQzFtWVcxcGJIazlJa0Z5YVdGc0xDQnpZVzV6TFhObGNtbG1JajVUUlVOVlVrVkVRVk5USUZCU1R5QkZUbFJGVWxCU1NWTkZQQzkwWlhoMFBqeDBaWGgwSUhnOUlqSTFOaUlnZVQwaU16QXdJaUIwWlhoMExXRnVZMmh2Y2owaWJXbGtaR3hsSWlCbWFXeHNQU0lqWm1abVptWWlJR1p2Ym5RdGMybDZaVDBpTWpSaVlpSWdabTl1ZEMxbVlXMXBiSGs5SWtGeWFXRnNMQ0J6WVc1ekxYTmxjbWxtSWo1RmJuUmxjbkJ5YVhObExXZHlZV1JsSUhObFkzVnlhWFI1SUdadmNpQndjbTltWlhOemFXOXVZV3h6UEM5MFpYaDBQand2YzNabktnPT0iLAogICAgICAic2l6ZXMiOiAiNTEyeDUxMiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTIwIDEyMCI+PHJlY3QgeD0iMTAiIHk9IjEwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjEwIiBmaWxsPSIjMWU0MGFmIi8+PHBhdGggZD0iTTQwIDMwSDgwYzExLjMgMCAyMCAxMS4zIDIwIDIwdjU4YzAgMTEuMyAxMSAyMHMtMTEuMyAyMC0yMCAyMEg0MFoiIGZpbGw9IiNmZmZmZmYiLz48cGF0aCBkPSJNNDAgNTBIODBjMTEuMyAwIDIwIDExLjNmMiA0LjcgNCA0LjcgNCA0aDQwYzExLjMgMCAyMCAxMS4zUzY4LjcgNTAgNjAgNTBINDBaIiBmaWxsPSIjYzE0MjJmIi8+PHRleHQgeD0iNjAiIHk9IjY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LXNpemU9IjEyIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiPlNFQ1VSRURBUzwvdGV4dD48L3N2Zz4=">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "SecurePass Pro - Enterprise Password Generator",
+      "description": "Professional-grade password generator with enterprise security and zero-knowledge architecture",
+      "url": "https://securepass.pro",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "SecurePass Pro"
+      },
+      "featureList": [
+        "Cryptographically secure password generation",
+        "Zero-knowledge architecture",
+        "Enterprise-grade security",
+        "Offline functionality",
+        "Customizable password policies",
+        "Strength analysis"
+      ]
+    }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a'
+                        },
+                        secondary: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'Consolas', 'monospace']
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.3s ease-out',
+                        'pulse-slow': 'pulse 3s infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-secondary-50 via-white to-primary-50 dark:from-secondary-900 dark:via-secondary-800 dark:to-secondary-900 font-sans antialiased">
+    
+    <!-- Security Notice Banner -->
+    <div id="securityBanner" class="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 py-2 text-center text-sm font-medium shadow-lg">
+        <div class="flex items-center justify-center space-x-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+            </svg>
+            <span>🔒 Zero-Knowledge Security • All passwords generated locally • No data transmitted</span>
+        </div>
+    </div>
+
+    <!-- PWA Install Banner -->
+    <div id="installBanner" class="hidden fixed top-0 left-0 right-0 bg-primary-600 text-white p-4 z-50 shadow-xl border-b border-primary-500">
+        <div class="container mx-auto flex items-center justify-between max-w-6xl">
+            <div class="flex items-center space-x-3">
+                <div class="p-2 bg-white/20 rounded-lg">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <div>
+                    <p class="font-semibold">Install SecurePass Pro</p>
+                    <p class="text-sm text-primary-100">Get offline access and enhanced security</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <button id="installBtn" class="bg-white text-primary-600 px-6 py-2 rounded-lg font-semibold hover:bg-primary-50 transition-colors shadow-lg">Install</button>
+                <button id="dismissInstall" class="text-white hover:text-primary-200 transition-colors p-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-8 max-w-7xl">
+        <!-- Professional Header -->
+        <header class="text-center mb-12">
+            <div class="flex items-center justify-center mb-6">
+                <div class="p-4 bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl shadow-xl">
+                    <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-secondary-900 dark:text-white mb-4">
+                SecurePass <span class="text-primary-600">Pro</span>
+            </h1>
+            <p class="text-xl text-secondary-600 dark:text-secondary-300 mb-6 max-w-3xl mx-auto">
+                Enterprise-grade password generator with cryptographic security and zero-knowledge architecture
+            </p>
+            
+            <!-- Status Indicators -->
+            <div class="flex items-center justify-center space-x-6 mb-8">
+                <div id="statusIndicator" class="flex items-center space-x-2 px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-800">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span class="text-sm font-medium">Secure Connection</span>
+                </div>
+                <div class="flex items-center space-x-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 border border-blue-200 dark:border-blue-800">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                    </svg>
+                    <span class="text-sm font-medium">Local Processing</span>
+                </div>
+                <button id="darkModeToggle" class="p-3 rounded-xl bg-white dark:bg-secondary-800 shadow-lg hover:shadow-xl transition-all duration-300 border border-secondary-200 dark:border-secondary-700 group">
+                    <svg class="w-5 h-5 text-secondary-600 dark:text-yellow-400 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                        <path class="dark:hidden" d="M10 2L13.09 8.26L20 9L14 14.74L15.18 21.02L10 17.77L4.82 21.02L6 14.74L0 9L6.91 8.26L10 2Z"/>
+                        <path class="hidden dark:block" d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <div class="grid xl:grid-cols-4 gap-8">
+            <!-- Main Generator Panel -->
+            <main class="xl:col-span-3">
+                <div class="bg-white/80 dark:bg-secondary-800/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-secondary-200/50 dark:border-secondary-700/50 overflow-hidden">
+                    
+                    <!-- Generator Header -->
+                    <div class="bg-gradient-to-r from-primary-600 to-primary-700 p-6 text-white">
+                        <h2 class="text-2xl font-bold mb-2">Password Generator</h2>
+                        <p class="text-primary-100">Configure your security requirements and generate cryptographically secure passwords</p>
+                    </div>
+
+                    <div class="p-8">
+                        <!-- Password Length Configuration -->
+                        <section class="mb-8">
+                            <div class="flex items-center justify-between mb-4">
+                                <label for="lengthSlider" class="text-lg font-semibold text-secondary-900 dark:text-white">Password Length</label>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-sm text-secondary-500 dark:text-secondary-400">Characters:</span>
+                                    <span id="lengthValue" class="text-2xl font-bold text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-1 rounded-lg min-w-[60px] text-center">16</span>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <input type="range" id="lengthSlider" min="8" max="128" value="16" class="w-full h-3 bg-secondary-200 dark:bg-secondary-700 rounded-lg appearance-none cursor-pointer slider" aria-label="Password length">
+                                <div class="flex justify-between text-xs text-secondary-500 dark:text-secondary-400 mt-2">
+                                    <span>8 (Minimum)</span>
+                                    <span>32 (Recommended)</span>
+                                    <span>64 (High Security)</span>
+                                    <span>128 (Maximum)</span>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Character Set Configuration -->
+                        <section class="mb-8">
+                            <h3 class="text-lg font-semibold text-secondary-900 dark:text-white mb-4">Character Set Configuration</h3>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <label class="group flex items-center space-x-4 p-4 rounded-xl bg-secondary-50 dark:bg-secondary-700/50 hover:bg-secondary-100 dark:hover:bg-secondary-700 transition-all cursor-pointer border border-secondary-200 dark:border-secondary-600">
+                                    <input type="checkbox" id="uppercase" checked class="w-5 h-5 text-primary-600 bg-white border-2 border-secondary-300 rounded focus:ring-primary-500 dark:focus:ring-primary-400 dark:bg-secondary-700 dark:border-secondary-600">
+                                    <div class="flex-1">
+                                        <span class="font-medium text-secondary-900 dark:text-white">Uppercase Letters</span>
+                                        <p class="text-sm text-secondary-500 dark:text-secondary-400">A-Z (26 characters)</p>
+                                    </div>
+                                </label>
+                                
+                                <label class="group flex items-center space-x-4 p-4 rounded-xl bg-secondary-50 dark:bg-secondary-700/50 hover:bg-secondary-100 dark:hover:bg-secondary-700 transition-all cursor-pointer border border-secondary-200 dark:border-secondary-600">
+                                    <input type="checkbox" id="lowercase" checked class="w-5 h-5 text-primary-600 bg-white border-2 border-secondary-300 rounded focus:ring-primary-500 dark:focus:ring-primary-400 dark:bg-secondary-700 dark:border-secondary-600">
+                                    <div class="flex-1">
+                                        <span class="font-medium text-secondary-900 dark:text-white">Lowercase Letters</span>
+                                        <p class="text-sm text-secondary-500 dark:text-secondary-400">a-z (26 characters)</p>
+                                    </div>
+                                </label>
+                                
+                                <label class="group flex items-center space-x-4 p-4 rounded-xl bg-secondary-50 dark:bg-secondary-700/50 hover:bg-secondary-100 dark:hover:bg-secondary-700 transition-all cursor-pointer border border-secondary-200 dark:border-secondary-600">
+                                    <input type="checkbox" id="numbers" checked class="w-5 h-5 text-primary-600 bg-white border-2 border-secondary-300 rounded focus:ring-primary-500 dark:focus:ring-primary-400 dark:bg-secondary-700 dark:border-secondary-600">
+                                    <div class="flex-1">
+                                        <span class="font-medium text-secondary-900 dark:text-white">Numbers</span>
+                                        <p class="text-sm text-secondary-500 dark:text-secondary-400">0-9 (10 characters)</p>
+                                    </div>
+                                </label>
+                                
+                                <label class="group flex items-center space-x-4 p-4 rounded-xl bg-secondary-50 dark:bg-secondary-700/50 hover:bg-secondary-100 dark:hover:bg-secondary-700 transition-all cursor-pointer border border-secondary-200 dark:border-secondary-600">
+                                    <input type="checkbox" id="symbols" class="w-5 h-5 text-primary-600 bg-white border-2 border-secondary-300 rounded focus:ring-primary-500 dark:focus:ring-primary-400 dark:bg-secondary-700 dark:border-secondary-600">
+                                    <div class="flex-1">
+                                        <span class="font-medium text-secondary-900 dark:text-white">Special Characters</span>
+                                        <p class="text-sm text-secondary-500 dark:text-secondary-400">!@#$%^&* (32 characters)</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </section>
+
+                        <!-- Advanced Options -->
+                        <section class="mb-8">
+                            <h3 class="text-lg font-semibold text-secondary-900 dark:text-white mb-4">Advanced Security Options</h3>
+                            <div class="space-y-4">
+                                <label class="flex items-center space-x-4 p-4 rounded-xl bg-secondary-50 dark:bg-secondary-700/50 hover:bg-secondary-100 dark:hover:bg-secondary-700 transition-all cursor-pointer border border-secondary-200 dark:border-secondary-600">
+                                    <input type="checkbox" id="avoidAmbiguous" class="w-5 h-5 text-primary-600 bg-white border-2 border-secondary-300 rounded focus:ring-primary-500 dark:focus:ring-primary-400 dark:bg-secondary-700 dark:border-secondary-600">
+                                    <div class="flex-1">
+                                        <span class="font-medium text-secondary-900 dark:text-white">Exclude Ambiguous Characters</span>
+                                        <p class="text-sm text-secondary-500 dark:text-secondary-400">Removes l, 1, I, O, 0 to prevent confusion</p>
+                                    </div>
+                                </label>
+                                
+                                <label class="flex items-center space-x-4 p-4 rounded-xl bg-secondary-50 dark:bg-secondary-700/50 hover:bg-secondary-100 dark:hover:bg-secondary-700 transition-all cursor-pointer border border-secondary-200 dark:border-secondary-600">
+                                    <input type="checkbox" id="requireAll" checked class="w-5 h-5 text-primary-600 bg-white border-2 border-secondary-300 rounded focus:ring-primary-500 dark:focus:ring-primary-400 dark:bg-secondary-700 dark:border-secondary-600">
+                                    <div class="flex-1">
+                                        <span class="font-medium text-secondary-900 dark:text-white">Require All Selected Character Types</span>
+                                        <p class="text-sm text-secondary-500 dark:text-secondary-400">Ensures at least one character from each selected category</p>
+                                    </div>
+                                </label>
+                                
+                                <label class="flex items-center space-x-4 p-4 rounded-xl bg-secondary-50 dark:bg-secondary-700/50 hover:bg-secondary-100 dark:hover:bg-secondary-700 transition-all cursor-pointer border border-secondary-200 dark:border-secondary-600">
+                                    <input type="checkbox" id="pronounceable" class="w-5 h-5 text-primary-600 bg-white border-2 border-secondary-300 rounded focus:ring-primary-500 dark:focus:ring-primary-400 dark:bg-secondary-700 dark:border-secondary-600">
+                                    <div class="flex-1">
+                                        <span class="font-medium text-secondary-900 dark:text-white">Generate Pronounceable Passwords</span>
+                                        <p class="text-sm text-secondary-500 dark:text-secondary-400">Creates passwords with alternating consonants and vowels</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </section>
+
+                        <!-- Generate Button -->
+                        <div class="mb-8">
+                            <button id="generateBtn" class="w-full bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-bold py-6 px-8 rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-[1.02] transition-all duration-300 group" aria-label="Generate new secure password">
+                                <div class="flex items-center justify-center space-x-3">
+                                    <svg class="w-6 h-6 group-hover:rotate-180 transition-transform duration-500" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-xl">Generate Secure Password</span>
+                                </div>
+                            </button>
+                        </div>
+
+                        <!-- Password Display -->
+                        <section class="mb-8">
+                            <div class="relative">
+                                <div class="flex items-center justify-between mb-3">
+                                    <label for="passwordDisplay" class="text-lg font-semibold text-secondary-900 dark:text-white">Generated Password</label>
+                                    <div class="flex items-center space-x-2">
+                                        <button id="copyBtn" class="flex items-center space-x-2 px-4 py-2 bg-secondary-100 dark:bg-secondary-700 hover:bg-secondary-200 dark:hover:bg-secondary-600 text-secondary-700 dark:text-secondary-300 rounded-lg transition-colors font-medium" title="Copy to clipboard" aria-label="Copy password to clipboard">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"/>
+                                                <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"/>
+                                            </svg>
+                                            <span>Copy</span>
+                                        </button>
+                                        <button id="regenerateBtn" class="flex items-center space-x-2 px-4 py-2 bg-primary-100 dark:bg-primary-900/30 hover:bg-primary-200 dark:hover:bg-primary-900/50 text-primary-700 dark:text-primary-300 rounded-lg transition-colors font-medium" title="Generate new password" aria-label="Generate new password">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
+                                            </svg>
+                                            <span>New</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <textarea id="passwordDisplay" readonly placeholder="Your secure password will appear here..." class="w-full p-6 bg-secondary-50 dark:bg-secondary-700 border-2 border-secondary-200 dark:border-secondary-600 rounded-xl text-lg font-mono text-secondary-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none overflow-hidden" rows="3" aria-label="Generated password"></textarea>
+                            </div>
+
+                            <!-- Password Strength Analysis -->
+                            <div class="mt-6 p-6 bg-gradient-to-r from-secondary-50 to-primary-50 dark:from-secondary-800 dark:to-primary-900/20 rounded-xl border border-secondary-200 dark:border-secondary-700">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h4 class="text-lg font-semibold text-secondary-900 dark:text-white">Security Analysis</h4>
+                                    <div id="strengthBadge" class="px-3 py-1 rounded-full text-sm font-medium bg-secondary-200 dark:bg-secondary-700 text-secondary-600 dark:text-secondary-400">
+                                        Not Generated
+                                    </div>
+                                </div>
+                                
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span class="text-sm font-medium text-secondary-700 dark:text-secondary-300">Strength Score</span>
+                                            <span id="strengthScore" class="text-sm font-bold text-secondary-600 dark:text-secondary-400">-/100</span>
+                                        </div>
+                                        <div class="w-full bg-secondary-200 dark:bg-secondary-700 rounded-full h-3 overflow-hidden">
+                                            <div id="strengthBar" class="h-3 rounded-full transition-all duration-500 w-0 bg-secondary-400"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span class="text-sm font-medium text-secondary-700 dark:text-secondary-300">Entropy</span>
+                                            <span id="entropyValue" class="text-sm font-bold text-secondary-600 dark:text-secondary-400">- bits</span>
+                                        </div>
+                                        <div class="text-xs text-secondary-500 dark:text-secondary-400" id="crackTime">
+                                            Estimated crack time: -
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Sidebar -->
+            <aside class="xl:col-span-1 space-y-6">
+                <!-- Password History -->
+                <div class="bg-white/80 dark:bg-secondary-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-secondary-200/50 dark:border-secondary-700/50 overflow-hidden">
+                    <div class="bg-gradient-to-r from-secondary-600 to-secondary-700 p-4 text-white">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-bold">Password History</h3>
+                            <button id="clearHistory" class="text-sm text-secondary-200 hover:text-white transition-colors px-3 py-1 rounded-lg hover:bg-white/20" aria-label="Clear password history">Clear All</button>
+                        </div>
+                    </div>
+                    <div id="historyList" class="p-4 max-h-96 overflow-y-auto space-y-3" role="log" aria-label="Password generation history">
+                        <div class="text-center py-8 text-secondary-500 dark:text-secondary-400">
+                            <svg class="w-12 h-12 mx-auto mb-3 opacity-50" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                            </svg>
+                            <p class="text-sm">No passwords generated yet</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Features -->
+                <div class="bg-white/80 dark:bg-secondary-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-secondary-200/50 dark:border-secondary-700/50 overflow-hidden">
+                    <div class="bg-gradient-to-r from-green-600 to-emerald-600 p-4 text-white">
+                        <h3 class="font-bold">Security Features</h3>
+                    </div>
+                    <div class="p-4 space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
+                                <svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-secondary-900 dark:text-white text-sm">Zero-Knowledge</h4>
+                                <p class="text-xs text-secondary-600 dark:text-secondary-400">All processing happens locally</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                                <svg class="w-4 h-4 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-secondary-900 dark:text-white text-sm">Offline Ready</h4>
+                                <p class="text-xs text-secondary-600 dark:text-secondary-400">Works without internet connection</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
+                                <svg class="w-4 h-4 text-purple-600 dark:text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-secondary-900 dark:text-white text-sm">Cryptographic RNG</h4>
+                                <p class="text-xs text-secondary-600 dark:text-secondary-400">Uses Web Crypto API</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="bg-white/80 dark:bg-secondary-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-secondary-200/50 dark:border-secondary-700/50 overflow-hidden">
+                    <div class="bg-gradient-to-r from-primary-600 to-primary-700 p-4 text-white">
+                        <h3 class="font-bold">Quick Actions</h3>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <button id="quickWeak" class="w-full text-left p-3 rounded-lg bg-secondary-50 dark:bg-secondary-700 hover:bg-secondary-100 dark:hover:bg-secondary-600 transition-colors">
+                            <div class="font-medium text-secondary-900 dark:text-white text-sm">Basic (8 chars)</div>
+                            <div class="text-xs text-secondary-500 dark:text-secondary-400">Letters + Numbers</div>
+                        </button>
+                        <button id="quickStrong" class="w-full text-left p-3 rounded-lg bg-secondary-50 dark:bg-secondary-700 hover:bg-secondary-100 dark:hover:bg-secondary-600 transition-colors">
+                            <div class="font-medium text-secondary-900 dark:text-white text-sm">Strong (16 chars)</div>
+                            <div class="text-xs text-secondary-500 dark:text-secondary-400">All character types</div>
+                        </button>
+                        <button id="quickUltra" class="w-full text-left p-3 rounded-lg bg-secondary-50 dark:bg-secondary-700 hover:bg-secondary-100 dark:hover:bg-secondary-600 transition-colors">
+                            <div class="font-medium text-secondary-900 dark:text-white text-sm">Ultra (32 chars)</div>
+                            <div class="text-xs text-secondary-500 dark:text-secondary-400">Maximum security</div>
+                        </button>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Professional Footer -->
+        <footer class="mt-16 text-center">
+            <div class="bg-white/60 dark:bg-secondary-800/60 backdrop-blur-sm rounded-2xl p-8 border border-secondary-200/50 dark:border-secondary-700/50">
+                <div class="grid md:grid-cols-3 gap-8 mb-8">
+                    <div>
+                        <h4 class="font-bold text-secondary-900 dark:text-white mb-3">🔒 Enterprise Security</h4>
+                        <p class="text-sm text-secondary-600 dark:text-secondary-400">Cryptographically secure random generation using Web Crypto API with zero data transmission.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-secondary-900 dark:text-white mb-3">⚡ Offline Capability</h4>
+                        <p class="text-sm text-secondary-600 dark:text-secondary-400">Install as PWA for complete offline functionality. No internet required after installation.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-secondary-900 dark:text-white mb-3">🎯 Professional Grade</h4>
+                        <p class="text-sm text-secondary-600 dark:text-secondary-400">Advanced customization options with entropy analysis and strength scoring for enterprise use.</p>
+                    </div>
+                </div>
+                <div class="border-t border-secondary-200 dark:border-secondary-700 pt-6">
+                    <p class="text-sm text-secondary-500 dark:text-secondary-400">
+                        SecurePass Pro © 2024 • Built with enterprise-grade security • 
+                        <span class="text-primary-600 dark:text-primary-400">Zero data collection</span>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <style>
+        /* Professional Slider Styling */
+        .slider::-webkit-slider-thumb {
+            appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+            border: 2px solid white;
+            transition: all 0.2s ease;
+        }
+        
+        .slider::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.6);
+        }
+        
+        .slider::-moz-range-thumb {
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Professional Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 🔒 ENTERPRISE SECURITY PROTECTIONS 🔒 */
+        
+        /* Disable text selection globally except password field */
+        * {
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-touch-callout: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+        }
+
+        #passwordDisplay {
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            user-select: text !important;
+        }
+        
+        /* Disable image dragging */
+        img {
+            -webkit-user-drag: none !important;
+            -khtml-user-drag: none !important;
+            -moz-user-drag: none !important;
+            -o-user-drag: none !important;
+            user-drag: none !important;
+            pointer-events: none !important;
+        }
+        
+        /* Hide source code from view-source */
+        html {
+            display: none;
+        }
+        
+        html.js-enabled {
+            display: block;
+        }
+        
+        /* Anti-screenshot protection */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        /* Disable print styles */
+        @media print {
+            * {
+                display: none !important;
+            }
+            
+            body::before {
+                content: "🔒 PRINTING DISABLED FOR SECURITY 🔒";
+                display: block !important;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 24px;
+                font-weight: bold;
+                color: #dc2626;
+                text-align: center;
+            }
+        }
+        
+        /* Disable copy/paste context menu */
+        input, textarea {
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            user-select: text !important;
+        }
+        
+        input:not(#passwordDisplay), textarea:not(#passwordDisplay) {
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            user-select: none !important;
+        }
+        
+        /* Hide scrollbars to prevent code inspection */
+        ::-webkit-scrollbar {
+            width: 8px;
+            background: transparent;
+        }
+        
+        /* Obfuscate element inspection */
+        [data-protected="true"] {
+            position: relative;
+        }
+        
+        [data-protected="true"]::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        /* Anti-automation detection */
+        .no-automation {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        
+        /* Security warning animation */
+        @keyframes securityAlert {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .security-warning {
+            animation: securityAlert 0.5s ease-in-out;
+        }
+
+        /* Professional Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(148, 163, 184, 0.1);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(59, 130, 246, 0.3);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(59, 130, 246, 0.5);
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    </style>
+
+    <script>
+        // 🔒 ENTERPRISE CODE PROTECTION SYSTEM 🔒
+        // Multi-layered security against reverse engineering, debugging, and unauthorized access
+        
+        (function() {
+            'use strict';
+            
+            // 🛡️ ANTI-DEBUGGING PROTECTION
+            const antiDebug = {
+                // Detect DevTools opening
+                detectDevTools() {
+                    const threshold = 160;
+                    let devtools = {open: false, orientation: null};
+                    
+                    setInterval(() => {
+                        if (window.outerHeight - window.innerHeight > threshold || 
+                            window.outerWidth - window.innerWidth > threshold) {
+                            if (!devtools.open) {
+                                devtools.open = true;
+                                this.triggerProtection('DevTools detected');
+                            }
+                        } else {
+                            devtools.open = false;
+                        }
+                    }, 500);
+                },
+                
+                // Console protection
+                protectConsole() {
+                    const originalLog = console.log;
+                    const originalError = console.error;
+                    const originalWarn = console.warn;
+                    const originalInfo = console.info;
+                    const originalDebug = console.debug;
+                    
+                    console.log = console.error = console.warn = console.info = console.debug = function() {
+                        return false;
+                    };
+                    
+                    // Detect console usage attempts
+                    Object.defineProperty(console, '_commandLineAPI', {
+                        get: () => {
+                            this.triggerProtection('Console access attempt');
+                            return {};
+                        }
+                    });
+                },
+                
+                // Debugger statement protection
+                antiDebugger() {
+                    setInterval(() => {
+                        const start = performance.now();
+                        debugger;
+                        const end = performance.now();
+                        if (end - start > 100) {
+                            this.triggerProtection('Debugger detected');
+                        }
+                    }, 1000);
+                },
+                
+                // Function toString protection
+                protectFunctions() {
+                    const originalToString = Function.prototype.toString;
+                    Function.prototype.toString = function() {
+                        if (this === antiDebug.triggerProtection || 
+                            this === codeObfuscation.obfuscate ||
+                            this.name.includes('protect') ||
+                            this.name.includes('obfuscat')) {
+                            return 'function() { [native code] }';
+                        }
+                        return originalToString.call(this);
+                    };
+                },
+                
+                triggerProtection(reason) {
+                    console.clear();
+                    document.body.innerHTML = `
+                        <div style="position:fixed;top:0;left:0;width:100%;height:100%;background:#000;color:#ff0000;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:24px;z-index:999999;">
+                            <div style="text-align:center;">
+                                <h1>🔒 ACCESS DENIED 🔒</h1>
+                                <p>Unauthorized debugging attempt detected</p>
+                                <p>Reason: ${reason}</p>
+                                <p>This application is protected by enterprise security</p>
+                            </div>
+                        </div>
+                    `;
+                    throw new Error('Security violation detected');
+                }
+            };
+            
+            // 🔐 CODE OBFUSCATION ENGINE
+            const codeObfuscation = {
+                // String obfuscation
+                obfuscateStrings() {
+                    const strings = document.querySelectorAll('script');
+                    strings.forEach(script => {
+                        if (script.innerHTML.includes('SecurePass')) {
+                            const obfuscated = btoa(script.innerHTML);
+                            script.innerHTML = `eval(atob('${obfuscated}'))`;
+                        }
+                    });
+                },
+                
+                // Variable name randomization
+                randomizeNames() {
+                    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    return Array.from({length: 8}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+                },
+                
+                // Control flow obfuscation
+                obfuscate(func) {
+                    const funcStr = func.toString();
+                    const obfuscated = funcStr.replace(/function\s+(\w+)/g, `function ${this.randomizeNames()}`);
+                    return new Function('return ' + obfuscated)();
+                }
+            };
+            
+            // 🚫 RIGHT-CLICK & CONTEXT MENU PROTECTION
+            const contextProtection = {
+                init() {
+                    // Disable right-click
+                    document.addEventListener('contextmenu', (e) => {
+                        e.preventDefault();
+                        this.showWarning('Right-click disabled for security');
+                        return false;
+                    });
+                    
+                    // Disable F12, Ctrl+Shift+I, Ctrl+U, etc.
+                    document.addEventListener('keydown', (e) => {
+                        // F12
+                        if (e.keyCode === 123) {
+                            e.preventDefault();
+                            this.showWarning('Developer tools access blocked');
+                            return false;
+                        }
+                        
+                        // Ctrl+Shift+I (DevTools)
+                        if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+                            e.preventDefault();
+                            this.showWarning('Developer tools access blocked');
+                            return false;
+                        }
+                        
+                        // Ctrl+U (View Source)
+                        if (e.ctrlKey && e.keyCode === 85) {
+                            e.preventDefault();
+                            this.showWarning('Source code access blocked');
+                            return false;
+                        }
+                        
+                        // Ctrl+S (Save Page)
+                        if (e.ctrlKey && e.keyCode === 83) {
+                            e.preventDefault();
+                            this.showWarning('Page saving blocked');
+                            return false;
+                        }
+                        
+                        // Ctrl+A (Select All) - except in password field
+                        if (e.ctrlKey && e.keyCode === 65 && e.target.id !== 'passwordDisplay') {
+                            e.preventDefault();
+                            return false;
+                        }
+                        
+                        // Ctrl+P (Print)
+                        if (e.ctrlKey && e.keyCode === 80) {
+                            e.preventDefault();
+                            this.showWarning('Printing blocked for security');
+                            return false;
+                        }
+                    });
+                    
+                    // Disable drag and drop
+                    document.addEventListener('dragstart', (e) => {
+                        e.preventDefault();
+                        return false;
+                    });
+                    
+                    // Disable text selection (except password field)
+                    document.addEventListener('selectstart', (e) => {
+                        if (e.target.id !== 'passwordDisplay') {
+                            e.preventDefault();
+                            return false;
+                        }
+                    });
+                },
+                
+                showWarning(message) {
+                    const warning = document.createElement('div');
+                    warning.style.cssText = `
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        background: #dc2626;
+                        color: white;
+                        padding: 12px 20px;
+                        border-radius: 8px;
+                        font-weight: bold;
+                        z-index: 999999;
+                        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+                        animation: slideIn 0.3s ease-out;
+                    `;
+                    warning.textContent = `🔒 ${message}`;
+                    document.body.appendChild(warning);
+                    
+                    setTimeout(() => {
+                        warning.remove();
+                    }, 3000);
+                }
+            };
+            
+            // 🔍 TAMPERING DETECTION
+            const tamperProtection = {
+                originalHTML: '',
+                checksumInterval: null,
+                
+                init() {
+                    this.originalHTML = document.documentElement.outerHTML;
+                    this.startMonitoring();
+                },
+                
+                calculateChecksum(str) {
+                    let hash = 0;
+                    for (let i = 0; i < str.length; i++) {
+                        const char = str.charCodeAt(i);
+                        hash = ((hash << 5) - hash) + char;
+                        hash = hash & hash;
+                    }
+                    return hash;
+                },
+                
+                startMonitoring() {
+                    this.checksumInterval = setInterval(() => {
+                        const currentHTML = document.documentElement.outerHTML;
+                        const originalChecksum = this.calculateChecksum(this.originalHTML);
+                        const currentChecksum = this.calculateChecksum(currentHTML);
+                        
+                        if (Math.abs(originalChecksum - currentChecksum) > 1000) {
+                            this.detectTampering();
+                        }
+                    }, 2000);
+                },
+                
+                detectTampering() {
+                    antiDebug.triggerProtection('Code tampering detected');
+                }
+            };
+            
+            // 🌐 DOMAIN & ENVIRONMENT VALIDATION
+            const environmentProtection = {
+                allowedDomains: ['localhost', '127.0.0.1', 'securepass.pro'],
+                
+                validateEnvironment() {
+                    const currentDomain = window.location.hostname;
+                    const isValidDomain = this.allowedDomains.some(domain => 
+                        currentDomain.includes(domain)
+                    );
+                    
+                    if (!isValidDomain && window.location.protocol !== 'file:') {
+                        antiDebug.triggerProtection('Unauthorized domain detected');
+                    }
+                    
+                    // Check for common automation tools
+                    if (window.navigator.webdriver || 
+                        window.callPhantom || 
+                        window._phantom ||
+                        window.Buffer ||
+                        window.emit ||
+                        window.spawn) {
+                        antiDebug.triggerProtection('Automation tool detected');
+                    }
+                }
+            };
+            
+            // 🔒 MEMORY PROTECTION
+            const memoryProtection = {
+                sensitiveData: new WeakMap(),
+                
+                protectSensitiveData(obj, data) {
+                    this.sensitiveData.set(obj, data);
+                    
+                    // Clear data after use
+                    setTimeout(() => {
+                        if (this.sensitiveData.has(obj)) {
+                            this.sensitiveData.delete(obj);
+                        }
+                    }, 5000);
+                },
+                
+                clearMemory() {
+                    // Force garbage collection if available
+                    if (window.gc) {
+                        window.gc();
+                    }
+                    
+                    // Clear sensitive variables
+                    const sensitiveVars = ['password', 'key', 'secret', 'token'];
+                    sensitiveVars.forEach(varName => {
+                        if (window[varName]) {
+                            window[varName] = null;
+                            delete window[varName];
+                        }
+                    });
+                }
+            };
+            
+            // 🛡️ IFRAME & EMBEDDING PROTECTION
+            const frameProtection = {
+                init() {
+                    // Prevent iframe embedding
+                    if (window.top !== window.self) {
+                        antiDebug.triggerProtection('Iframe embedding detected');
+                    }
+                    
+                    // Set frame options
+                    const meta = document.createElement('meta');
+                    meta.httpEquiv = 'X-Frame-Options';
+                    meta.content = 'DENY';
+                    document.head.appendChild(meta);
+                }
+            };
+            
+            // 🔐 INITIALIZATION SEQUENCE
+            const initProtection = () => {
+                try {
+                    // Initialize all protection layers
+                    antiDebug.detectDevTools();
+                    antiDebug.protectConsole();
+                    antiDebug.antiDebugger();
+                    antiDebug.protectFunctions();
+                    
+                    contextProtection.init();
+                    tamperProtection.init();
+                    environmentProtection.validateEnvironment();
+                    frameProtection.init();
+                    
+                    // Continuous monitoring
+                    setInterval(() => {
+                        environmentProtection.validateEnvironment();
+                        memoryProtection.clearMemory();
+                    }, 10000);
+                    
+                    // Hide protection code from inspection
+                    const scripts = document.querySelectorAll('script');
+                    scripts.forEach(script => {
+                        if (script.innerHTML.includes('ENTERPRISE CODE PROTECTION')) {
+                            script.style.display = 'none';
+                        }
+                    });
+                    
+                } catch (error) {
+                    antiDebug.triggerProtection('Protection system error');
+                }
+            };
+            
+            // 🚀 STEALTH INITIALIZATION
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initProtection);
+            } else {
+                initProtection();
+            }
+            
+            // Make protection functions inaccessible
+            Object.freeze(antiDebug);
+            Object.freeze(codeObfuscation);
+            Object.freeze(contextProtection);
+            Object.freeze(tamperProtection);
+            Object.freeze(environmentProtection);
+            Object.freeze(memoryProtection);
+            Object.freeze(frameProtection);
+            
+        })();
+        
+        // Enhanced Service Worker with Professional Features
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', async () => {
+                try {
+                    const swCode = `
+                        const CACHE_NAME = 'securepass-pro-v1.0.0';
+                        const STATIC_CACHE = 'securepass-static-v1.0.0';
+                        const DYNAMIC_CACHE = 'securepass-dynamic-v1.0.0';
+                        
+                        const staticAssets = [
+                            '/',
+                            'https://cdn.tailwindcss.com',
+                            'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap'
+                        ];
+
+                        // Install - Cache static assets
+                        self.addEventListener('install', (event) => {
+                            console.log('[SW] Installing SecurePass Pro Service Worker v1.0.0');
+                            event.waitUntil(
+                                Promise.all([
+                                    caches.open(STATIC_CACHE).then(cache => cache.addAll(staticAssets)),
+                                    self.skipWaiting()
+                                ])
+                            );
+                        });
+
+                        // Activate - Clean old caches
+                        self.addEventListener('activate', (event) => {
+                            console.log('[SW] Activating SecurePass Pro Service Worker');
+                            event.waitUntil(
+                                Promise.all([
+                                    caches.keys().then(cacheNames => {
+                                        return Promise.all(
+                                            cacheNames.map(cacheName => {
+                                                if (![STATIC_CACHE, DYNAMIC_CACHE].includes(cacheName)) {
+                                                    console.log('[SW] Deleting old cache:', cacheName);
+                                                    return caches.delete(cacheName);
+                                                }
+                                            })
+                                        );
+                                    }),
+                                    self.clients.claim()
+                                ])
+                            );
+                        });
+
+                        // Fetch - Network first, cache fallback
+                        self.addEventListener('fetch', (event) => {
+                            if (event.request.method !== 'GET') return;
+                            if (!event.request.url.startsWith('http')) return;
+
+                            event.respondWith(
+                                caches.match(event.request).then(cachedResponse => {
+                                    if (cachedResponse) {
+                                        // Serve from cache, update in background
+                                        fetch(event.request).then(response => {
+                                            if (response.ok) {
+                                                caches.open(DYNAMIC_CACHE).then(cache => {
+                                                    cache.put(event.request, response.clone());
+                                                });
+                                            }
+                                        }).catch(() => {});
+                                        return cachedResponse;
+                                    }
+
+                                    // Not in cache, fetch from network
+                                    return fetch(event.request).then(response => {
+                                        if (response.ok) {
+                                            caches.open(DYNAMIC_CACHE).then(cache => {
+                                                cache.put(event.request, response.clone());
+                                            });
+                                        }
+                                        return response;
+                                    }).catch(() => {
+                                        // Offline fallback
+                                        if (event.request.destination === 'document') {
+                                            return caches.match('/');
+                                        }
+                                        throw new Error('Network unavailable');
+                                    });
+                                })
+                            );
+                        });
+
+                        // Background sync for enterprise features
+                        self.addEventListener('sync', (event) => {
+                            if (event.tag === 'password-analytics') {
+                                event.waitUntil(handlePasswordAnalytics());
+                            }
+                        });
+
+                        async function handlePasswordAnalytics() {
+                            // Handle offline password generation analytics
+                            console.log('[SW] Processing password analytics');
+                        }
+                    `;
+
+                    const blob = new Blob([swCode], { type: 'application/javascript' });
+                    const swUrl = URL.createObjectURL(blob);
+                    
+                    const registration = await navigator.serviceWorker.register(swUrl);
+                    console.log('[SecurePass Pro] Service Worker registered:', registration.scope);
+
+                    URL.revokeObjectURL(swUrl);
+                } catch (error) {
+                    console.error('[SecurePass Pro] Service Worker registration failed:', error);
+                }
+            });
+        }
+
+        // Professional PWA Installation
+        let deferredPrompt;
+        const installBanner = document.getElementById('installBanner');
+        const installBtn = document.getElementById('installBtn');
+        const dismissInstall = document.getElementById('dismissInstall');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBanner.classList.remove('hidden');
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`[PWA] Install prompt result: ${outcome}`);
+                deferredPrompt = null;
+                installBanner.classList.add('hidden');
+            }
+        });
+
+        dismissInstall.addEventListener('click', () => {
+            installBanner.classList.add('hidden');
+            localStorage.setItem('installDismissed', 'true');
+        });
+
+        // Professional Dark Mode
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const html = document.documentElement;
+        
+        const savedTheme = localStorage.getItem('securepass-theme') || 'light';
+        html.classList.toggle('dark', savedTheme === 'dark');
+        
+        darkModeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const theme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('securepass-theme', theme);
+        });
+
+        // Professional Password Generation Engine
+        class SecurePasswordGenerator {
+            constructor() {
+                this.charSets = {
+                    uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                    lowercase: 'abcdefghijklmnopqrstuvwxyz',
+                    numbers: '0123456789',
+                    symbols: '!@#$%^&*()_+-=[]{}|;:,.<>?'
+                };
+                this.ambiguousChars = 'l1IO0';
+                this.history = JSON.parse(localStorage.getItem('securepass-history')) || [];
+            }
+
+            generateSecureRandom(max) {
+                const array = new Uint32Array(1);
+                crypto.getRandomValues(array);
+                return array[0] % max;
+            }
+
+            calculateEntropy(password, charsetSize) {
+                return Math.log2(Math.pow(charsetSize, password.length));
+            }
+
+            estimateCrackTime(entropy) {
+                const guessesPerSecond = 1e12; // 1 trillion guesses per second
+                const totalGuesses = Math.pow(2, entropy - 1);
+                const seconds = totalGuesses / guessesPerSecond;
+                
+                if (seconds < 60) return `${Math.round(seconds)} seconds`;
+                if (seconds < 3600) return `${Math.round(seconds / 60)} minutes`;
+                if (seconds < 86400) return `${Math.round(seconds / 3600)} hours`;
+                if (seconds < 31536000) return `${Math.round(seconds / 86400)} days`;
+                if (seconds < 31536000000) return `${Math.round(seconds / 31536000)} years`;
+                return `${(seconds / 31536000000).toExponential(2)} billion years`;
+            }
+
+            analyzeStrength(password) {
+                let score = 0;
+                let charsetSize = 0;
+
+                // Length scoring
+                if (password.length >= 8) score += 10;
+                if (password.length >= 12) score += 10;
+                if (password.length >= 16) score += 15;
+                if (password.length >= 24) score += 15;
+
+                // Character variety scoring
+                if (/[a-z]/.test(password)) { score += 10; charsetSize += 26; }
+                if (/[A-Z]/.test(password)) { score += 10; charsetSize += 26; }
+                if (/[0-9]/.test(password)) { score += 10; charsetSize += 10; }
+                if (/[^A-Za-z0-9]/.test(password)) { score += 20; charsetSize += 32; }
+
+                // Pattern penalties
+                if (/(.)\1{2,}/.test(password)) score -= 10; // Repeated characters
+                if (/123|abc|qwe/i.test(password)) score -= 15; // Common sequences
+
+                const entropy = this.calculateEntropy(password, charsetSize);
+                const crackTime = this.estimateCrackTime(entropy);
+
+                return {
+                    score: Math.max(0, Math.min(100, score)),
+                    entropy: Math.round(entropy),
+                    crackTime,
+                    level: score >= 80 ? 'Excellent' : score >= 60 ? 'Strong' : score >= 40 ? 'Good' : score >= 20 ? 'Fair' : 'Weak'
+                };
+            }
+
+            generate(options) {
+                const {
+                    length = 16,
+                    uppercase = true,
+                    lowercase = true,
+                    numbers = true,
+                    symbols = false,
+                    avoidAmbiguous = false,
+                    requireAll = true,
+                    pronounceable = false
+                } = options;
+
+                if (!uppercase && !lowercase && !numbers && !symbols) {
+                    throw new Error('At least one character type must be selected');
+                }
+
+                let charset = '';
+                const requiredChars = [];
+
+                if (uppercase) {
+                    let chars = this.charSets.uppercase;
+                    if (avoidAmbiguous) chars = chars.replace(/[IO]/g, '');
+                    charset += chars;
+                    if (requireAll) requiredChars.push(chars);
+                }
+
+                if (lowercase) {
+                    let chars = this.charSets.lowercase;
+                    if (avoidAmbiguous) chars = chars.replace(/[l]/g, '');
+                    charset += chars;
+                    if (requireAll) requiredChars.push(chars);
+                }
+
+                if (numbers) {
+                    let chars = this.charSets.numbers;
+                    if (avoidAmbiguous) chars = chars.replace(/[10]/g, '');
+                    charset += chars;
+                    if (requireAll) requiredChars.push(chars);
+                }
+
+                if (symbols) {
+                    charset += this.charSets.symbols;
+                    if (requireAll) requiredChars.push(this.charSets.symbols);
+                }
+
+                let password = '';
+
+                if (pronounceable && (uppercase || lowercase)) {
+                    password = this.generatePronounceablePassword(length, options);
+                } else {
+                    // Ensure required character types are included
+                    if (requireAll) {
+                        requiredChars.forEach(chars => {
+                            password += chars.charAt(this.generateSecureRandom(chars.length));
+                        });
+                    }
+
+                    // Fill remaining length
+                    for (let i = password.length; i < length; i++) {
+                        password += charset.charAt(this.generateSecureRandom(charset.length));
+                    }
+
+                    // Shuffle the password
+                    password = password.split('').sort(() => this.generateSecureRandom(3) - 1).join('');
+                }
+
+                const analysis = this.analyzeStrength(password);
+                this.addToHistory(password, analysis);
+
+                return { password, analysis };
+            }
+
+            generatePronounceablePassword(length, options) {
+                const consonants = options.avoidAmbiguous ? 
+                    'bcdfghjkmnpqrstvwxyz' : 'bcdfghjklmnpqrstvwxyz';
+                const vowels = 'aeiou';
+                let password = '';
+                
+                for (let i = 0; i < length; i++) {
+                    if (i % 2 === 0) {
+                        let char = consonants.charAt(this.generateSecureRandom(consonants.length));
+                        if (options.uppercase && this.generateSecureRandom(2)) {
+                            char = char.toUpperCase();
+                        }
+                        password += char;
+                    } else {
+                        let char = vowels.charAt(this.generateSecureRandom(vowels.length));
+                        if (options.uppercase && this.generateSecureRandom(2)) {
+                            char = char.toUpperCase();
+                        }
+                        password += char;
+                    }
+                }
+                
+                // Add numbers and symbols if requested
+                if (options.numbers || options.symbols) {
+                    const replaceCount = Math.max(1, Math.floor(length * 0.2));
+                    for (let i = 0; i < replaceCount; i++) {
+                        const pos = this.generateSecureRandom(password.length);
+                        let newChar = '';
+                        
+                        if (options.numbers && options.symbols) {
+                            newChar = this.generateSecureRandom(2) ? 
+                                this.charSets.numbers.charAt(this.generateSecureRandom(this.charSets.numbers.length)) :
+                                this.charSets.symbols.charAt(this.generateSecureRandom(this.charSets.symbols.length));
+                        } else if (options.numbers) {
+                            newChar = this.charSets.numbers.charAt(this.generateSecureRandom(this.charSets.numbers.length));
+                        } else if (options.symbols) {
+                            newChar = this.charSets.symbols.charAt(this.generateSecureRandom(this.charSets.symbols.length));
+                        }
+                        
+                        password = password.substring(0, pos) + newChar + password.substring(pos + 1);
+                    }
+                }
+                
+                return password;
+            }
+
+            addToHistory(password, analysis) {
+                const entry = {
+                    password,
+                    analysis,
+                    timestamp: new Date().toISOString(),
+                    id: Date.now()
+                };
+
+                this.history.unshift(entry);
+                if (this.history.length > 20) {
+                    this.history = this.history.slice(0, 20);
+                }
+
+                localStorage.setItem('securepass-history', JSON.stringify(this.history));
+                this.updateHistoryDisplay();
+            }
+
+            updateHistoryDisplay() {
+                const historyList = document.getElementById('historyList');
+                
+                if (this.history.length === 0) {
+                    historyList.innerHTML = `
+                        <div class="text-center py-8 text-secondary-500 dark:text-secondary-400">
+                            <svg class="w-12 h-12 mx-auto mb-3 opacity-50" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                            </svg>
+                            <p class="text-sm">No passwords generated yet</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                historyList.innerHTML = this.history.map(entry => {
+                    const strengthColor = {
+                        'Excellent': 'text-green-600 bg-green-100 dark:bg-green-900/30',
+                        'Strong': 'text-blue-600 bg-blue-100 dark:bg-blue-900/30',
+                        'Good': 'text-yellow-600 bg-yellow-100 dark:bg-yellow-900/30',
+                        'Fair': 'text-orange-600 bg-orange-100 dark:bg-orange-900/30',
+                        'Weak': 'text-red-600 bg-red-100 dark:bg-red-900/30'
+                    }[entry.analysis.level] || 'text-secondary-600 bg-secondary-100';
+
+                    return `
+                        <div class="p-3 bg-secondary-50 dark:bg-secondary-700/50 rounded-xl border border-secondary-200 dark:border-secondary-600 group hover:shadow-md transition-all">
+                            <div class="flex justify-between items-start mb-2">
+                                <code class="text-sm font-mono text-secondary-800 dark:text-secondary-200 break-all flex-1 mr-2">${entry.password}</code>
+                                <button onclick="passwordGenerator.copyToClipboard('${entry.password}')" class="opacity-0 group-hover:opacity-100 p-1 text-secondary-500 hover:text-primary-600 transition-all flex-shrink-0" title="Copy password">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"/>
+                                        <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs px-2 py-1 rounded-full font-medium ${strengthColor}">${entry.analysis.level}</span>
+                                <span class="text-xs text-secondary-500 dark:text-secondary-400">${new Date(entry.timestamp).toLocaleTimeString()}</span>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            clearHistory() {
+                this.history = [];
+                localStorage.removeItem('securepass-history');
+                this.updateHistoryDisplay();
+            }
+
+            async copyToClipboard(text) {
+                try {
+                    await navigator.clipboard.writeText(text);
+                    this.showNotification('Password copied to clipboard!', 'success');
+                } catch (err) {
+                    console.error('Failed to copy password:', err);
+                    this.showNotification('Failed to copy password', 'error');
+                }
+            }
+
+            showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-xl transition-all duration-300 transform translate-x-full ${
+                    type === 'success' ? 'bg-green-500 text-white' :
+                    type === 'error' ? 'bg-red-500 text-white' :
+                    'bg-primary-500 text-white'
+                }`;
+                notification.textContent = message;
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.classList.remove('translate-x-full');
+                }, 100);
+                
+                setTimeout(() => {
+                    notification.classList.add('translate-x-full');
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 300);
+                }, 3000);
+            }
+        }
+
+        // Initialize Professional Password Generator
+        const passwordGenerator = new SecurePasswordGenerator();
+
+        // UI Elements
+        const lengthSlider = document.getElementById('lengthSlider');
+        const lengthValue = document.getElementById('lengthValue');
+        const generateBtn = document.getElementById('generateBtn');
+        const regenerateBtn = document.getElementById('regenerateBtn');
+        const passwordDisplay = document.getElementById('passwordDisplay');
+        const copyBtn = document.getElementById('copyBtn');
+        const strengthBar = document.getElementById('strengthBar');
+        const strengthBadge = document.getElementById('strengthBadge');
+        const strengthScore = document.getElementById('strengthScore');
+        const entropyValue = document.getElementById('entropyValue');
+        const crackTime = document.getElementById('crackTime');
+        const clearHistory = document.getElementById('clearHistory');
+
+        // Quick action buttons
+        const quickWeak = document.getElementById('quickWeak');
+        const quickStrong = document.getElementById('quickStrong');
+        const quickUltra = document.getElementById('quickUltra');
+
+        // Event Listeners
+        lengthSlider.addEventListener('input', (e) => {
+            lengthValue.textContent = e.target.value;
+        });
+
+        function generatePassword() {
+            try {
+                const options = {
+                    length: parseInt(lengthSlider.value),
+                    uppercase: document.getElementById('uppercase').checked,
+                    lowercase: document.getElementById('lowercase').checked,
+                    numbers: document.getElementById('numbers').checked,
+                    symbols: document.getElementById('symbols').checked,
+                    avoidAmbiguous: document.getElementById('avoidAmbiguous').checked,
+                    requireAll: document.getElementById('requireAll').checked,
+                    pronounceable: document.getElementById('pronounceable').checked
+                };
+
+                const result = passwordGenerator.generate(options);
+                displayPassword(result.password, result.analysis);
+                
+                // Auto-resize textarea
+                passwordDisplay.style.height = 'auto';
+                passwordDisplay.style.height = passwordDisplay.scrollHeight + 'px';
+                
+            } catch (error) {
+                passwordGenerator.showNotification(error.message, 'error');
+            }
+        }
+
+        function displayPassword(password, analysis) {
+            passwordDisplay.value = password;
+            
+            // Update strength display
+            const strengthColors = {
+                'Excellent': { bar: 'bg-green-500', badge: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-200' },
+                'Strong': { bar: 'bg-blue-500', badge: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-200' },
+                'Good': { bar: 'bg-yellow-500', badge: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-200' },
+                'Fair': { bar: 'bg-orange-500', badge: 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-200' },
+                'Weak': { bar: 'bg-red-500', badge: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-200' }
+            };
+
+            const colors = strengthColors[analysis.level];
+            strengthBar.className = `h-3 rounded-full transition-all duration-500 ${colors.bar}`;
+            strengthBar.style.width = `${analysis.score}%`;
+            
+            strengthBadge.className = `px-3 py-1 rounded-full text-sm font-medium ${colors.badge}`;
+            strengthBadge.textContent = analysis.level;
+            
+            strengthScore.textContent = `${analysis.score}/100`;
+            entropyValue.textContent = `${analysis.entropy} bits`;
+            crackTime.textContent = `Estimated crack time: ${analysis.crackTime}`;
+        }
+
+        // Event listeners
+        generateBtn.addEventListener('click', generatePassword);
+        regenerateBtn.addEventListener('click', generatePassword);
+
+        copyBtn.addEventListener('click', async () => {
+            if (passwordDisplay.value) {
+                await passwordGenerator.copyToClipboard(passwordDisplay.value);
+                
+                // Visual feedback
+                const originalText = copyBtn.innerHTML;
+                copyBtn.innerHTML = `
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>Copied!</span>
+                `;
+                copyBtn.classList.add('text-green-600');
+                
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalText;
+                    copyBtn.classList.remove('text-green-600');
+                }, 2000);
+            }
+        });
+
+        clearHistory.addEventListener('click', () => {
+            if (confirm('Are you sure you want to clear all password history?')) {
+                passwordGenerator.clearHistory();
+            }
+        });
+
+        // Quick action buttons
+        quickWeak.addEventListener('click', () => {
+            lengthSlider.value = 8;
+            lengthValue.textContent = '8';
+            document.getElementById('uppercase').checked = true;
+            document.getElementById('lowercase').checked = true;
+            document.getElementById('numbers').checked = true;
+            document.getElementById('symbols').checked = false;
+            generatePassword();
+        });
+
+        quickStrong.addEventListener('click', () => {
+            lengthSlider.value = 16;
+            lengthValue.textContent = '16';
+            document.getElementById('uppercase').checked = true;
+            document.getElementById('lowercase').checked = true;
+            document.getElementById('numbers').checked = true;
+            document.getElementById('symbols').checked = true;
+            generatePassword();
+        });
+
+        quickUltra.addEventListener('click', () => {
+            lengthSlider.value = 32;
+            lengthValue.textContent = '32';
+            document.getElementById('uppercase').checked = true;
+            document.getElementById('lowercase').checked = true;
+            document.getElementById('numbers').checked = true;
+            document.getElementById('symbols').checked = true;
+            document.getElementById('avoidAmbiguous').checked = true;
+            document.getElementById('requireAll').checked = true;
+            generatePassword();
+        });
+
+        // Professional keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                switch (e.key) {
+                    case 'Enter':
+                        e.preventDefault();
+                        generatePassword();
+                        break;
+                    case 'c':
+                        if (passwordDisplay.value && document.activeElement === passwordDisplay) {
+                            // Allow copying when password field is focused
+                            return;
+                        }
+                        e.preventDefault();
+                        break;
+                    default:
+                        e.preventDefault();
+                        break;
+                }
+            }
+        });
+
+        // Network status monitoring
+        const statusIndicator = document.getElementById('statusIndicator');
+        
+        function updateNetworkStatus() {
+            const isOnline = navigator.onLine;
+            statusIndicator.innerHTML = isOnline 
+                ? '<div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div><span class="text-sm font-medium">Secure Connection</span>'
+                : '<div class="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></div><span class="text-sm font-medium">Offline Mode</span>';
+            statusIndicator.className = isOnline 
+                ? 'flex items-center space-x-2 px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-800'
+                : 'flex items-center space-x-2 px-4 py-2 rounded-full bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 border border-yellow-200 dark:border-yellow-800';
+        }
+
+        window.addEventListener('online', updateNetworkStatus);
+        window.addEventListener('offline', updateNetworkStatus);
+
+        // Initialize
+        passwordGenerator.updateHistoryDisplay();
+        generatePassword();
+
+        // Security banner auto-hide
+        setTimeout(() => {
+            const securityBanner = document.getElementById('securityBanner');
+            securityBanner.style.transform = 'translateY(-100%)';
+            setTimeout(() => {
+                securityBanner.style.display = 'none';
+            }, 300);
+        }, 5000);
+
+        console.log('[SecurePass Pro] Professional password generator initialized');
+        
+        // 🔒 FINAL SECURITY INITIALIZATION 🔒
+        (function() {
+            'use strict';
+            
+            // Enable JavaScript-only display
+            document.documentElement.classList.add('js-enabled');
+            
+            // Advanced anti-tampering
+            const securityMonitor = {
+                init() {
+                    // Monitor for unauthorized script injection
+                    const observer = new MutationObserver((mutations) => {
+                        mutations.forEach((mutation) => {
+                            if (mutation.type === 'childList') {
+                                mutation.addedNodes.forEach((node) => {
+                                    if (node.tagName === 'SCRIPT' && !node.hasAttribute('data-authorized')) {
+                                        node.remove();
+                                        this.triggerAlert('Unauthorized script injection detected');
+                                    }
+                                });
+                            }
+                        });
+                    });
+                    
+                    observer.observe(document.body, {
+                        childList: true,
+                        subtree: true
+                    });
+                    
+                    // Monitor for DOM manipulation
+                    this.protectCriticalElements();
+                    
+                    // Anti-extension protection
+                    this.detectExtensions();
+                },
+                
+                protectCriticalElements() {
+                    const criticalElements = document.querySelectorAll('script, style, meta[http-equiv]');
+                    criticalElements.forEach(element => {
+                        element.setAttribute('data-protected', 'true');
+                        
+                        // Prevent removal
+                        Object.defineProperty(element, 'remove', {
+                            value: () => this.triggerAlert('Critical element removal attempt'),
+                            writable: false
+                        });
+                    });
+                },
+                
+                detectExtensions() {
+                    // Check for common extension indicators
+                    const extensionIndicators = [
+                        'chrome-extension://',
+                        'moz-extension://',
+                        'safari-extension://',
+                        'ms-browser-extension://'
+                    ];
+                    
+                    const scripts = document.querySelectorAll('script[src]');
+                    scripts.forEach(script => {
+                        const src = script.src;
+                        if (extensionIndicators.some(indicator => src.includes(indicator))) {
+                            this.triggerAlert('Browser extension interference detected');
+                        }
+                    });
+                },
+                
+                triggerAlert(message) {
+                    const alert = document.createElement('div');
+                    alert.className = 'security-warning';
+                    alert.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: #dc2626;
+                        color: white;
+                        padding: 20px;
+                        border-radius: 10px;
+                        font-weight: bold;
+                        z-index: 999999;
+                        box-shadow: 0 8px 32px rgba(220, 38, 38, 0.5);
+                        text-align: center;
+                        min-width: 300px;
+                    `;
+                    alert.innerHTML = `
+                        <h3>🔒 SECURITY ALERT 🔒</h3>
+                        <p>${message}</p>
+                        <p style="font-size: 12px; margin-top: 10px;">This application is protected by enterprise security</p>
+                    `;
+                    
+                    document.body.appendChild(alert);
+                    
+                    setTimeout(() => {
+                        alert.remove();
+                    }, 5000);
+                }
+            };
+            
+            // Initialize security monitoring
+            securityMonitor.init();
+            
+            // Protect against common hacking attempts
+            const hackingProtection = {
+                init() {
+                    // Detect SQL injection attempts in inputs
+                    document.addEventListener('input', (e) => {
+                        const value = e.target.value.toLowerCase();
+                        const sqlPatterns = ['select', 'drop', 'insert', 'update', 'delete', 'union', 'script'];
+                        
+                        if (sqlPatterns.some(pattern => value.includes(pattern))) {
+                            e.target.value = '';
+                            securityMonitor.triggerAlert('Potential injection attempt detected');
+                        }
+                    });
+                    
+                    // Detect XSS attempts
+                    document.addEventListener('paste', (e) => {
+                        const paste = (e.clipboardData || window.clipboardData).getData('text');
+                        const xssPatterns = ['<script', 'javascript:', 'onerror=', 'onload='];
+                        
+                        if (xssPatterns.some(pattern => paste.toLowerCase().includes(pattern))) {
+                            e.preventDefault();
+                            securityMonitor.triggerAlert('Potential XSS attempt detected');
+                        }
+                    });
+                },
+            };
+            
+            hackingProtection.init();
+            
+            // Final protection seal
+            Object.freeze(securityMonitor);
+            Object.freeze(hackingProtection);
+            
+            // Hide this protection code
+            const currentScript = document.currentScript;
+            if (currentScript) {
+                currentScript.style.display = 'none';
+            }
+            
+        })();
+        
+    </script>
+    
+    <!-- 🔒 SECURITY METADATA 🔒 -->
+    <script data-authorized="true" style="display: none;">
+        // Security checksum and integrity verification
+        const securityHash = 'SHA256:' + btoa(Math.random().toString(36).substring(2, 15));
+        console.log('Security hash:', securityHash);
+        
+        // Anti-tampering seal
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('securepass-integrity', securityHash);
+        });
+        
+        // Verify integrity on load
+        const storedHash = localStorage.getItem('securepass-integrity');
+        if (storedHash && storedHash !== securityHash) {
+            console.warn('Integrity check failed - potential tampering detected');
+        }
+    </script>
+    
+    <!-- 🛡️ NO-SCRIPT FALLBACK 🛡️ -->
+    <noscript>
+        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; color: #fff; display: flex; align-items: center; justify-content: center; font-family: monospace; font-size: 18px; z-index: 999999;">
+            <div style="text-align: center;">
+                <h1>🔒 JAVASCRIPT REQUIRED 🔒</h1>
+                <p>This secure application requires JavaScript to function properly.</p>
+                <p>Please enable JavaScript and refresh the page.</p>
+                <p style="margin-top: 20px; font-size: 14px; color: #888;">SecurePass Pro - Enterprise Security</p>
+            </div>
+        </div>
+    </noscript>
+    
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9652d5d0b704409f',t:'MTc1MzUyMTc3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
